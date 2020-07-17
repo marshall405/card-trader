@@ -1,0 +1,20 @@
+header a {
+    text-decoration: none;
+    color: #1f59b1;
+}
+
+/* Nav */
+.MuiPaper-root {
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* selected link for nav */
+.MuiTabs-root .Mui-selected {
+    color: #1f59b1;
+}
+
+/*  Nav indicator for links, only for active link */
+.PrivateTabIndicator-root-2 {
+    color: #1f59b1;
+}
