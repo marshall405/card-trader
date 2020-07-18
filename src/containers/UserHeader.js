@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export default function UserHeader(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState();
+    const [value, setValue] = React.useState(0);
     console.log(props)
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -25,15 +25,11 @@ export default function UserHeader(props) {
         <header>
 
             < Paper className={classes.root} >
-                <NavLink to="/dashboard/allcards" onClick={() => handleChange(this, 0)}> <h2>{props.name}</h2> </NavLink>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    centered
-                >
-                    <Tab label="Logout" component={NavLink} to="/logout" />
+                <NavLink to="/" onClick={() => handleChange(this, 0)}> <h2>{props.name}</h2> </NavLink>
 
-                </Tabs>
+                <Tab label="Logout" component={NavLink} to="/logout" />
+
+
             </Paper >
         </header >
     )

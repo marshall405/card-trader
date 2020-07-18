@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 export default function SportsCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
-    const { category, img_url, first_name, last_name, team, year, condition } = props.card.info
+    const { category, img_url, first_name, last_name, team, year, condition } = props.card.info || props.card
 
 
     return (

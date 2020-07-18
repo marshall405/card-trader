@@ -8,6 +8,7 @@ import "./assets/styles/header.css"
 import './assets/styles/home.css'
 import './assets/styles/filter.css'
 import './assets/styles/login.css'
+import './assets/styles/newCardForm.css'
 
 
 import Home from './components/Home'
@@ -50,6 +51,7 @@ export default class App extends Component {
       loggedIn: true,
       user: user
     })
+
   }
   logUserOut = () => {
     window.localStorage.clear()
@@ -62,11 +64,10 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        {
-          this.state.loggedIn ?
-            <Dashboard logUserOut={this.logUserOut} user={this.state.user} />
-            :
-            <Home logUserIn={this.logUserIn} />
+        {this.state.loggedIn ?
+          <Dashboard logUserOut={this.logUserOut} user={this.state.user} />
+          :
+          <Home logUserIn={this.logUserIn} />
         }
       </Router>
     )

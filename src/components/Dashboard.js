@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 import RenderCards from './RenderCards'
+import RenderUserCards from './RenderUserCards'
+import AddNewCard from './AddNewCard'
 import UserHeader from '../containers/UserHeader'
 import UserActions from '../components/UserActions'
 export default class Dashboard extends Component {
@@ -12,20 +14,28 @@ export default class Dashboard extends Component {
 
         this.state = {
             user: props.user,
-
+            cards: props.user.cards
         }
     }
 
+    updateUserCards = card => {
+        const cards = [...this.state.cards]
+        cards.unshift(card)
+        this.setState({ cards })
+    }
 
     render() {
         return (
             <div>
-                <UserHeader name={this.props.user.username} />
+                <UserHeader name={this.state.user.username} />
                 <UserActions />
                 <div className="home-container">
-                    <Route path='/logout' exact render={() => this.props.logUserOut()} />
-                    {/* <Route path='/signup' exact render={() => <Signup />} />
-                    <Route path='/login' exact render={() => <Login logUserIn={this.props.logUserIn}/>} /> */}
+
+                    <Route path='/' exact render={() => <RenderUserCards cards={this.state.cards} />} />
+                    <Route path='/browse' render={() => <RenderCards />} />
+                    <Route path='/addcard' render={() => <AddNewCard updateUserCards={this.updateUserCards} />} />
+                    <Route path='/logout' render={() => this.props.logUserOut()} />
+
                 </div>
             </div>
         )
