@@ -40,7 +40,7 @@ export default class RenderCards extends Component {
     filterCards() {
         return this.state.cards.filter(card => {
             let player = card.info.first_name + " " + card.info.last_name
-            return ( (card.info.category === this.state.category) || this.state.category === "all") && (player.includes(this.state.search))
+            return ((card.info.category === this.state.category) || this.state.category === "all") && (player.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase().trim()))
         })
 
     }
@@ -52,6 +52,7 @@ export default class RenderCards extends Component {
 
     setFilter = e => this.setState({ category: e.target.value })
     setSearch = e => this.setState({ search: e.target.value })
+    
     render() {
         return (
             <Container maxWidth="xl" className="home-container">

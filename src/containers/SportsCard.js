@@ -35,6 +35,7 @@ const useStyles = makeStyles({
     },
 });
 
+
 export default function SportsCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
@@ -43,7 +44,7 @@ export default function SportsCard(props) {
 
     return (
 
-        <Grid item>
+        <Grid item onMouseLeave={() => setToggle(true)}>
 
             <Card >
                 <Typography align="left" variant="subtitle1" color="textSecondary">

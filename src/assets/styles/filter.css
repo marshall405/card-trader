@@ -1,0 +1,12 @@
+.filter {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.search {
+    padding: 5px;
+    width: 340px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}

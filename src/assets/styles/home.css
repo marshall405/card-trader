@@ -1,5 +1,8 @@
 .home-container {
-    background: #f0f0f0;
+    max-width: 950px;
+    margin: 10px auto;
+    /* background: #f0f0f0; */
     padding: 15px;
+    color: #303030;
   }
   
