@@ -19,6 +19,7 @@ export default function UserActions() {
                 <Tab label="Browse All Cards" component={NavLink} to="/dashboard/browse" />
                 <Tab label="Your Cards" component={NavLink} to="/dashboard" />
                 <Tab label="add new card" component={NavLink} to="/dashboard/addcard" />
+                <Tab label="view trades" component={NavLink} to="/dashboard/trades" />
             </Tabs>
         </div>
     )

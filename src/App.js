@@ -10,6 +10,7 @@ import './assets/styles/filter.css'
 import './assets/styles/login.css'
 import './assets/styles/newCardForm.css'
 import './assets/styles/userCards.css'
+import './assets/styles/availablecards.css'
 
 
 import Home from './components/Home'

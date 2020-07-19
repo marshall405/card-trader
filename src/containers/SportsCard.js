@@ -90,7 +90,7 @@ export default function SportsCard(props) {
                 {
                     props.loggedIn && !user_id ?
                         <div className="user-card-actions">
-                            <Link to={`/dashboard/edit/${id}`}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
+                            <Link to={`/dashboard/edit/${id}`} style={{ textDecoration: 'none' }}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
                             <Button size="small" color="secondary" variant="contained" >Delete Card</Button>
                         </div>
                         :
@@ -99,7 +99,7 @@ export default function SportsCard(props) {
                 {
                     props.loggedIn && user_id ?
                         <div className="user-card-actions">
-                            <Link to={`/dashboard/trade/${id}`}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
+                            <Link to={`/dashboard/trade/${id}`} style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
                         </div>
                         :
                         null

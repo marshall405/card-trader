@@ -1,0 +1,16 @@
+.available-cards-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.available-cards-container > div {
+    margin: 5px;
+    width: 200px;
+}
+
+.available-cards-container img {
+    width: 140px;
+}

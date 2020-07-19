@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 import RenderCards from './RenderCards'
+import Trades from './Trades'
 import EditCard from './EditCard'
 import DeleteCard from './DeleteCard'
 import MakeRequestTrade from './MakeRequestTrade'
@@ -15,6 +16,7 @@ const userCardsURL = `http://localhost:3001/cards/user/`
 export default class Dashboard extends Component {
 
     constructor(props) {
+        console.log(props)
         super(props)
 
         this.state = {
@@ -36,7 +38,6 @@ export default class Dashboard extends Component {
         })
             .then(res => res.json())
             .then(cards => this.setState({ cards }))
-
     }
     addCard = card => {
         const cards = [...this.state.cards]
@@ -61,7 +62,8 @@ export default class Dashboard extends Component {
                     <Route path='/dashboard/addcard' render={() => <AddNewCard addCard={this.addCard} />} />
                     <Route path='/dashboard/edit/:id' render={({ match }) => <EditCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} updateCard={this.updateCard} />} />
                     <Route path='/dashboard/delete/:id' render={({ match }) => <DeleteCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} />} />
-                    <Route path='/dashboard/trade/:id' render={({ match }) => <MakeRequestTrade card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} />} />
+                    <Route path='/dashboard/trade/:id' render={({ history, match }) => <MakeRequestTrade history={history} card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} />} />
+                    <Route path='/dashboard/trades/' render={({ history, match }) => <Trades />} />
 
                 </div>
             </div>

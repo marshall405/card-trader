@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 
 import RequestedCard from '../containers/RequestedCard'
+import AvailableCards from '../components/AvailableCards'
 
 const cardURL = "http://localhost:3001/cards/"
+const makeTradeOfferURL = "http://localhost:3001/trades"
 export default class MakeRequestTrade extends Component {
 
     constructor(props) {
+        console.log(props)
         super(props)
         this.state = {
             requestedCard: {},
-            availableCards: [],
-            loading: true
+            loading: true,
+            success: false
         }
     }
 
@@ -36,11 +40,40 @@ export default class MakeRequestTrade extends Component {
             })
     }
 
+    handleSubmitOffer = cardOfferIds => {
+        // ready to create an offer
+        fetch(makeTradeOfferURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `bearer: ${window.localStorage.getItem("jwt")}`
+            },
+            body: JSON.stringify({
+                card_id: this.state.requestedCard.card.id,
+                cards: cardOfferIds
+            })
+        })
+            .then(res => res.json())
+            .then(json => {
+                this.setState({ success: true })
+                setTimeout(() => this.props.history.push("/dashboard/trades/current"), 400)
+
+            })
+    }
     render() {
-        console.log(this.state.requestedCard)
         return (
             <div>
                 <h1>Request Trade </h1>
+                <div style={{ textAlign: 'right' }}>
+                    <Link to="/dashboard/browse" style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Back to Browsing</Button></Link>
+                </div>
+                {
+                    this.state.success ?
+                        <h5 className="success"> Trade created successfully!</h5>
+                        :
+                        null
+                }
                 {
                     this.state.loading ?
                         <div>
@@ -48,9 +81,10 @@ export default class MakeRequestTrade extends Component {
                     </div>
                         :
 
-                        <Container maxWidth="l" >
+                        <>
                             <RequestedCard card={this.state.requestedCard} />
-                        </Container>
+                            <AvailableCards cards={this.state.requestedCard} handleSubmitOffer={this.handleSubmitOffer} />
+                        </>
 
 
                 }
