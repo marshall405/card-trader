@@ -8,10 +8,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import Typography from '@material-ui/core/Typography';
 
 
@@ -37,17 +34,16 @@ const useStyles = makeStyles({
         padding: "13px"
     },
 });
-
-
-export default function SportsCard(props) {
+export default function RequestedCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
-    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card.info || props.card
-    const { user_id, username } = props.card.user || props.card
+    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card.card
+    const { user_id, username } = props.card.user
     return (
-
-        <Grid item onMouseLeave={() => setToggle(true)}>
-
+        <Grid item onMouseLeave={() => setToggle(true)} style={{ width: "400px" }}>
+                <Typography align="left" variant="subtitle1" color="textSecondary">
+                   Current owner <strong>{username}</strong>
+                </Typography>
             <Card className={classes.box}>
                 <Typography align="left" variant="subtitle1" color="textSecondary">
                     {category}
@@ -73,43 +69,14 @@ export default function SportsCard(props) {
                         <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                             Condition - {condition}
                         </Typography>
-                        {
-                            username ?
-                                <Typography variant="h5" color="primary" gutterBottom align="right">
-                                    Belongs To - {username}
-                                </Typography>
-                                :
-                                null
-                        }
-
                     </CardContent>
                 }
                 <CardActions>
                     <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "See Back" : "See Front"}</Button>
                 </CardActions>
-                {
-                    props.loggedIn && !user_id ?
-                        <div className="user-card-actions">
-                            <Link to={`/dashboard/edit/${id}`}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
-                            <Button size="small" color="secondary" variant="contained" >Delete Card</Button>
-                        </div>
-                        :
-                        null
-                }
-                {
-                    props.loggedIn && user_id ?
-                        <div className="user-card-actions">
-                            <Link to={`/dashboard/trade/${id}`}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
-                        </div>
-                        :
-                        null
-                }
 
             </Card >
 
         </Grid >
-
-
-
     )
 }

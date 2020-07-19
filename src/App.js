@@ -9,6 +9,7 @@ import './assets/styles/home.css'
 import './assets/styles/filter.css'
 import './assets/styles/login.css'
 import './assets/styles/newCardForm.css'
+import './assets/styles/userCards.css'
 
 
 import Home from './components/Home'
@@ -19,8 +20,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: false,
-      user: {}
+      loggedIn: false
     }
   }
 
@@ -42,33 +42,32 @@ export default class App extends Component {
       })
         .then(res => res.json())
         .then(json => {
-          this.logUserIn(json)
+          if (!json.message) {
+            this.logUserIn()
+          }
         })
     }
   }
-  logUserIn = user => {
-    this.setState({
-      loggedIn: true,
-      user: user
-    })
-
+  logUserIn = () => {
+    this.setState({ loggedIn: true })
   }
+
   logUserOut = () => {
     window.localStorage.clear()
     window.location.href = "/"
-    this.setState({
-      loggedIn: false,
-      user: ""
-    })
   }
   render() {
     return (
       <Router>
         {this.state.loggedIn ?
-          <Dashboard logUserOut={this.logUserOut} user={this.state.user} />
+          <Redirect to="/dashboard" />
           :
           <Home logUserIn={this.logUserIn} />
         }
+
+        <Route path="/dashboard" render={() => <Dashboard />} />
+        <Route path='/logout' render={() => this.logUserOut()} />
+
       </Router>
     )
   }

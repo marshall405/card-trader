@@ -16,10 +16,9 @@ export default function UserActions() {
                 onChange={handleChange}
                 centered
             >
-                <Tab label="Browse All Cards" component={NavLink} to="/browse" />
-                <Tab label="Your Cards" component={NavLink} to="/" />
-                <Tab label="add new card" component={NavLink} to="/addcard" />
-                <Tab label="view cards" />
+                <Tab label="Browse All Cards" component={NavLink} to="/dashboard/browse" />
+                <Tab label="Your Cards" component={NavLink} to="/dashboard" />
+                <Tab label="add new card" component={NavLink} to="/dashboard/addcard" />
             </Tabs>
         </div>
     )

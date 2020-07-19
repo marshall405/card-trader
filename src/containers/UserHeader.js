@@ -14,10 +14,9 @@ const useStyles = makeStyles({
     },
 });
 
-export default function UserHeader(props) {
+export default function UserHeader() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-    console.log(props)
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -25,7 +24,7 @@ export default function UserHeader(props) {
         <header>
 
             < Paper className={classes.root} >
-                <NavLink to="/" onClick={() => handleChange(this, 0)}> <h2>{props.name}</h2> </NavLink>
+                <NavLink to="/" onClick={() => handleChange(this, 0)}> <h2>{window.localStorage.getItem("username")}</h2> </NavLink>
 
                 <Tab label="Logout" component={NavLink} to="/logout" />
 

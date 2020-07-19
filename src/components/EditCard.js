@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,7 +19,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
-const cardURL = "http://localhost:3001/cards"
+const editCardURL = "http://localhost:3001/cards/"
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -28,11 +29,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function AddNewCard(props) {
+
+export default function EditCard(props) {
+    console.log(props)
     const history = useHistory()
     const classes = useStyles()
-    const [condition, setCondition] = useState("");
-    const [category, setCategory] = useState("");
+    const [condition, setCondition] = useState(props.card.condition);
+    const [category, setCategory] = useState(props.card.category);
     const [errors, setErrors] = useState("")
     const [success, setSuccess] = useState(false)
     const handleChange = (event) => {
@@ -48,63 +51,59 @@ export default function AddNewCard(props) {
         }
     };
     const handleSubmit = e => {
+        const jwt = window.localStorage.getItem("jwt")
         e.preventDefault()
-        if (condition && category) {
-            const jwt = window.localStorage.getItem("jwt")
-
-            let { first_name, last_name, team, year, condition, category } = e.target
-            fetch(cardURL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    'Authorization': `bearer: ${jwt}`
-                },
-                body: JSON.stringify({
-                    first_name: first_name.value.trim(),
-                    last_name: last_name.value.trim(),
-                    team: team.value.trim(),
-                    year: year.value.trim(),
-                    condition: condition.value,
-                    category: category.value
-                })
+        let { first_name, last_name, team, year, condition, category } = e.target
+        fetch(editCardURL + props.card.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                'Authorization': `bearer: ${jwt}`
+            },
+            body: JSON.stringify({
+                first_name: first_name.value.trim(),
+                last_name: last_name.value.trim(),
+                team: team.value.trim(),
+                year: year.value.trim(),
+                condition: condition.value,
+                category: category.value
             })
-                .then(res => res.json())
-                .then(card => {
-                    if (card.message) {
-                        setErrors(card.message)
-                    } else {
-                        props.addCard(card)
-                        setSuccess(true)
-                        setTimeout(() => history.push("/dashboard"), 500)
-                    }
-                })
-        }
-        else {
-            setErrors("Condition and Category are required!")
-        }
+        })
+            .then(res => res.json())
+            .then(card => {
+                if (card.errors) {
+                    setErrors(card.errors)
+                } else {
+                    setSuccess(true)
+                    props.updateCard(card)
+                    setTimeout(() => history.push("/dashboard"), 500)
+                }
+            })
     }
     return (
         <div>
-            <h1>Add New Card</h1>
+            <h1> Edit Card</h1>
             <h3> Card Details </h3>
             <div className="new-card-form">
                 {
                     errors ?
-                        <h5 className="alert"> {errors}</h5>
+                        <h5> {errors}</h5>
                         :
                         null
                 }
                 {
                     success ?
-                        <h5 className="success"> Card created successfully!</h5>
+                        <h5> Card successfully updated!</h5>
                         :
                         null
                 }
-                <form className={classes.root} autoComplete="off" onSubmit={handleSubmit}>
+                <img src={props.card.img_url} />
+                <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                     <div className="player-form">
                         <TextField
                             required
+                            defaultValue={props.card.first_name}
                             id="standard-full-width"
                             label="Player"
                             name="first_name"
@@ -118,6 +117,7 @@ export default function AddNewCard(props) {
                         />
                         <TextField
                             required
+                            defaultValue={props.card.last_name}
                             id="standard-full-width"
                             label="Player"
                             style={{ margin: 8 }}
@@ -131,6 +131,7 @@ export default function AddNewCard(props) {
                         />
                         <TextField
                             required
+                            defaultValue={props.card.team}
                             id="standard-full-width"
                             label="Team"
                             style={{ margin: 8 }}
@@ -144,6 +145,7 @@ export default function AddNewCard(props) {
                         />
                         <TextField
                             required
+                            defaultValue={props.card.year}
                             id="standard-full-width"
                             label="Year"
                             name="year"
@@ -160,10 +162,10 @@ export default function AddNewCard(props) {
                         <div>
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
-                                <FormControlLabel value="excellent" control={<Radio />} label="Excellent" />
-                                <FormControlLabel value="good" control={<Radio />} label="Good" />
-                                <FormControlLabel value="fair" control={<Radio />} label="Fair" />
-                                <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+                                <FormControlLabel value="Excellent" control={<Radio />} label="Excellent" />
+                                <FormControlLabel value="Good" control={<Radio />} label="Good" />
+                                <FormControlLabel value="Fair" control={<Radio />} label="Fair" />
+                                <FormControlLabel value="Poor" control={<Radio />} label="Poor" />
                             </RadioGroup>
                         </div>
                         <div>
@@ -175,12 +177,13 @@ export default function AddNewCard(props) {
                             </RadioGroup>
                         </div>
                     </div>
-                    <div className="file-container">
+                    {/* <div className="file-container">
                         <label for="file">Upload Card Image</label>
                         <input name="file" type="file" />
-                    </div>
+                    </div> */}
                     <div style={{ textAlign: "center" }}>
-                        <Button type="submit" className="login-button" variant="contained">Create New Card</Button>
+                        <Button type="submit" className="login-button" variant="contained">Save Changes</Button>
+                        <Button variant="contained" color="secondary" onClick={() => history.push("/dashboard")}>Cancel</Button>
                     </div>
 
                 </form>

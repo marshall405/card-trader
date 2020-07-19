@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -13,6 +13,9 @@ export default function RenderUserCards(props) {
     const [category, setCategory] = useState("all")
     const [search, setSearch] = useState("")
 
+    useEffect(() => {
+
+    })
     const filterCards = () => {
         return props.cards.filter(card => {
             let player = card.first_name + " " + card.last_name
@@ -21,7 +24,7 @@ export default function RenderUserCards(props) {
     }
     const renderCards = () => {
         const cards = filterCards()
-        return cards.map(card => <SportsCard key={card.id} card={card} />)
+        return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} />)
     }
 
     const setFilter = (e) => {
@@ -33,10 +36,10 @@ export default function RenderUserCards(props) {
     return (
         <Container maxWidth="xl" className="home-container">
             <Filter setFilter={setFilter} setSearch={handleSearch} />
-                <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
-                    {renderCards()}
-                </Grid>
-            
+            <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
+                {renderCards()}
+            </Grid>
+
         </Container>
     )
 }

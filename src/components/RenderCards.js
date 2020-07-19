@@ -32,7 +32,10 @@ export default class RenderCards extends Component {
     fetchAllCards() {
         fetch(cardsURL)
             .then(res => res.json())
-            .then(cards => {
+            .then(data => {
+                console.log(data)
+                let cards = data.filter(d => d.user.user_id !== parseInt(window.localStorage.getItem("id")))
+                console.log(cards)
                 this.setState({ cards, loading: !this.state.loading })
             })
     }
@@ -47,12 +50,12 @@ export default class RenderCards extends Component {
 
     renderCards() {
         const cards = this.filterCards()
-        return cards.map(card => <SportsCard key={card.info.id} card={card} />)
+        return cards.map(card => <SportsCard key={card.info.id} card={card} loggedIn={this.props.loggedIn} />)
     }
 
     setFilter = e => this.setState({ category: e.target.value })
     setSearch = e => this.setState({ search: e.target.value })
-    
+
     render() {
         return (
             <Container maxWidth="xl" className="home-container">

@@ -39,9 +39,11 @@ export default class Login extends Component {
                     this.setState({ errors: json.message })
                 } else {
                     window.localStorage.setItem("jwt", json.jwt)
+                    window.localStorage.setItem("username", json.user.username)
+                    window.localStorage.setItem("email", json.user.email)
+                    window.localStorage.setItem("id", json.user.id)
                     this.props.logUserIn(json.user)
                 }
-                console.log(json)
             })
     }
 

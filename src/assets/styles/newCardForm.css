@@ -3,7 +3,7 @@
     margin: 10px auto;
 }
 
-form > div:first-child {
+.player-form {
     margin: 10px auto;
     text-align: center;
 }
