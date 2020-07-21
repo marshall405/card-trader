@@ -17,8 +17,9 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-        width: 100,
-        height: 150,
+        width: 200,
+        height: 250,
+        padding: "10px"
 
     },
     bullet: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
     },
     box: {
         boxShadow: "0px 1px 10px rgba(0,0,0,.5)",
-        padding: "13px"
+        // padding: "13px"
     },
     small: {
         fontSize: 11
@@ -78,7 +79,7 @@ export default function DisplayAvailableCard(props) {
                     </CardContent>
                 }
                 <CardActions>
-                    <Button size="small" onClick={(e) => {e.stopPropagation();setToggle(!toggle)}}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "See Back" : "See Front"}</Button>
                 </CardActions>
 
             </Card >

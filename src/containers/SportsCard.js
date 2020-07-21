@@ -99,7 +99,7 @@ export default function SportsCard(props) {
                 {
                     props.loggedIn && user_id ?
                         <div className="user-card-actions">
-                            <Link to={`/dashboard/trade/${id}`} style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
+                            <Link to={`/dashboard/trades/${id}/new`} style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
                         </div>
                         :
                         null

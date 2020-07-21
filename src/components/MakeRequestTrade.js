@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
 import RequestedCard from '../containers/RequestedCard'
-import AvailableCards from '../components/AvailableCards'
+import AvailableCards from './AvailableCards'
 
 const cardURL = "http://localhost:3001/cards/"
 const makeTradeOfferURL = "http://localhost:3001/trades"
@@ -56,8 +56,9 @@ export default class MakeRequestTrade extends Component {
         })
             .then(res => res.json())
             .then(json => {
+                console.log(json)
                 this.setState({ success: true })
-                setTimeout(() => this.props.history.push("/dashboard/trades/current"), 400)
+                setTimeout(() => this.props.history.push("/dashboard/trades/"), 400)
 
             })
     }
@@ -83,7 +84,7 @@ export default class MakeRequestTrade extends Component {
 
                         <>
                             <RequestedCard card={this.state.requestedCard} />
-                            <AvailableCards cards={this.state.requestedCard} handleSubmitOffer={this.handleSubmitOffer} />
+                            <AvailableCards cards={this.state.requestedCard} handleSubmitOffer={this.handleSubmitOffer} cards={this.props.cards} />
                         </>
 
 

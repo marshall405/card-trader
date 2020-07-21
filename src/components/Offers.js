@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import TradeRequests from './TradeRequests'
 
-const tradesURL = "http://localhost:3001/trades/"
-export default class Trades extends Component {
+import TradeOffers from './TradeOffers'
+const tradesURL = "http://localhost:3001/offers/"
+export default class Offers extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tradeRequests: [],
+            tradeOffers: [],
             loading: true
         }
     }
@@ -27,32 +27,33 @@ export default class Trades extends Component {
         })
             .then(res => res.json())
             .then(json => {
-                const pending = json.traders.filter(trade => trade.status === "pending")
+
+                const pending = json.tradees.filter(trade => trade.status === "pending")
                 this.setState({
-                    tradeRequests: pending,
+                    tradeOffers: pending,
                     loading: false
                 })
             })
     }
-    renderRequests() {
-        if (this.state.tradeRequests.length > 0) {
-            return <TradeRequests trades={this.state.tradeRequests} />
+
+    renderOffers() {
+        if (this.state.tradeOffers.length > 0) {
+            return <TradeOffers trades={this.state.tradeOffers} />
         }
-        return "No Trades At This Time!"
+        return "No Offers At This Time!"
     }
     render() {
         return (
             <div>
-                <h1>Trades</h1>
+                <h1>Offers</h1>
 
                 {
                     this.state.loading ?
-                        <h3> ...Fetching data </h3>
+                        <h3> ...Fetching offers </h3>
                         :
-                        this.renderRequests()
+                        this.renderOffers()
                 }
             </div>
         )
     }
 }
-

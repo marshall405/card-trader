@@ -11,6 +11,7 @@ import './assets/styles/login.css'
 import './assets/styles/newCardForm.css'
 import './assets/styles/userCards.css'
 import './assets/styles/availablecards.css'
+import './assets/styles/trades.css'
 
 
 import Home from './components/Home'

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+
 import IMG from '../assets/images/download.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
-import CardHeader from '@material-ui/core/CardHeader';
+
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
@@ -37,13 +37,19 @@ const useStyles = makeStyles({
 export default function RequestedCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
-    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card.card
-    const { user_id, username } = props.card.user
+    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card.card || props.card
+    // const { user_id, username } = props.card.user
+
     return (
         <Grid item onMouseLeave={() => setToggle(true)} style={{ width: "400px" }}>
-                <Typography align="left" variant="subtitle1" color="textSecondary">
-                   Current owner <strong>{username}</strong>
-                </Typography>
+            <Typography align="left" variant="subtitle1" color="textSecondary">
+                {
+                    props.card.user ?
+                        <div>Card Owner <strong>{props.card.user.username}</strong></div>
+                        :
+                        ''
+                }
+            </Typography>
             <Card className={classes.box}>
                 <Typography align="left" variant="subtitle1" color="textSecondary">
                     {category}

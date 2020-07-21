@@ -13,27 +13,15 @@ export default class AvailableCards extends Component {
     }
 
     componentDidMount() {
-        this.fetchAvailableCards()
-    }
-
-    fetchAvailableCards() {
-        fetch(userCardsURL + window.localStorage.getItem("id"), {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `bearer: ${window.localStorage.getItem("jwt")}`
+        const availableCards = this.props.cards.filter(card => {
+            if (card.trade_id) {
+                return false
             }
+            return true
         })
-            .then(res => res.json())
-            .then(cards => {
-                const availableCards = cards.filter(card => !card.trade_id)
 
-                this.setState({ availableCards, loading: false })
-
-            })
+        this.setState({ availableCards })
     }
-
     toggleSelectCard = id => {
         const cardsIDsForOffer = [...this.state.cardsIDsForOffer]
         const index = this.state.cardsIDsForOffer.indexOf(id)
@@ -65,8 +53,8 @@ export default class AvailableCards extends Component {
                 }
                 <div className="available-cards-container">
                     {
-                        this.state.loading ?
-                            "fetcing data"
+                        this.state.availableCards.length === 0 ?
+                            <h3>No Available Cards to Offer!"</h3>
                             :
                             this.renderAvailableCards()
                     }
