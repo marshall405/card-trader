@@ -42,8 +42,11 @@ export default class Dashboard extends Component {
             }
         })
             .then(res => res.json())
-            .then(cards => this.setState({ cards }))
-    }
+            .then(cards => {
+                console.log(cards)
+                this.setState({ cards })
+            })
+        }
     addCard = card => {
         const cards = [...this.state.cards]
         cards.unshift(card)

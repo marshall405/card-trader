@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import IMG from '../assets/images/download.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
@@ -57,7 +56,7 @@ export default function RequestedCard(props) {
                 {toggle ?
                     <CardContent className={classes.root}>
                         <CardMedia style={{ textAlign: "center" }}>
-                            <img src={IMG} />
+                            <img src={img_url} />
                         </CardMedia>
                         <Typography align="center" className={classes.title} color="textSecondary" gutterBottom>
                             {first_name + ' ' + last_name}

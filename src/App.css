@@ -19,3 +19,12 @@
 .card {
     
 }
+
+.MuiCardMedia-root {
+    overflow: hidden;
+}
+img {
+    width: 80%;
+    height: 200px;
+    border-radius: 5px; 
+}
