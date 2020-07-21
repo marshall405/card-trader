@@ -19,7 +19,7 @@ export default class Home extends Component {
                 <Header />
                 <div className="home-container">
                     <Route path='/' exact render={() => <RenderCards />} />
-                    <Route path='/signup' exact render={() => <Signup />} />
+                    <Route path='/signup' exact render={() => <Signup logUserIn={this.props.logUserIn} />} />
                     <Route path='/login' exact render={() => <Login logUserIn={this.props.logUserIn} />} />
                 </div>
             </div>
