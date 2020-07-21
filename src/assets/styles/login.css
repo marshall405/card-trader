@@ -19,3 +19,14 @@
    
     
 }
+
+.signup{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.signup > div {
+    margin: 10px;
+}
+
