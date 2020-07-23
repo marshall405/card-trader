@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 const userURL = "http://localhost:3001/users"
 export default class Signup extends Component {
@@ -66,8 +67,8 @@ export default class Signup extends Component {
     }
     render() {
         return (
-            <div>
-                <h1> Signup </h1>
+            <Container className="home-container">
+                <h1 className="page-title"> Signup </h1>
                 <form className="signup" autoComplete="off" onSubmit={this.handleSubmit} >
 
                     <TextField required name="username" defaultValue={this.state.username} label="Username" onChange={this.handleChange} />
@@ -106,7 +107,7 @@ export default class Signup extends Component {
                         :
                         null
                 }
-            </div >
+            </Container >
         )
     }
 }

@@ -18,6 +18,7 @@ import FetchOffer from './FetchOffer'
 import Offers from './Offers'
 
 const userCardsURL = `http://localhost:3001/cards/user/`
+const delCardURL = `http://localhost:3001/cards/`
 export default class Dashboard extends Component {
 
     constructor(props) {
@@ -25,7 +26,8 @@ export default class Dashboard extends Component {
         super(props)
 
         this.state = {
-            cards: []
+            cards: [],
+            action: 1
         }
     }
 
@@ -46,7 +48,7 @@ export default class Dashboard extends Component {
                 console.log(cards)
                 this.setState({ cards })
             })
-        }
+    }
     addCard = card => {
         const cards = [...this.state.cards]
         cards.unshift(card)
@@ -65,19 +67,56 @@ export default class Dashboard extends Component {
         this.setState({ cards })
     }
 
+    deleteCard = id => {
+        const jwt = window.localStorage.getItem("jwt")
+        fetch(delCardURL + id, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `bearer: ${jwt}`
+            }
+        })
+            .then(res => res.json())
+            .then(json => this.removeCard(id))
+    }
+
+    setTradeId = (tradeCards, tradeID) => {
+        const tradeCardIds = tradeCards.map(card => card.id)
+        const cards = [...this.state.cards]
+        cards.forEach(card => {
+            if (tradeCardIds.indexOf(card.id) > -1) {
+                card.trade_id = tradeID
+            }
+        })
+        this.setState({ cards })
+    }
+    clearTradeId = tradeCards => {
+        const tradeCardIds = tradeCards.map(card => card.id)
+        const cards = [...this.state.cards]
+        cards.forEach(card => {
+            if (tradeCardIds.indexOf(card.id) > -1) {
+                card.trade_id = null
+            }
+        })
+        this.setState({ cards })
+    }
+    setActionValue = newValue => {
+        this.setState({ action: newValue })
+    }
     render() {
         return (
             <div>
                 <UserHeader />
-                <UserActions />
+                <UserActions setActionValue={this.setActionValue} action={this.state.action} />
                 <div className="home-container">
-                    <Route path='/dashboard' exact render={() => <RenderUserCards cards={this.state.cards} />} />
+                    <Route path='/dashboard' exact render={() => <RenderUserCards cards={this.state.cards} deleteCard={this.deleteCard} />} />
                     <Route path='/dashboard/browse' render={() => <RenderCards loggedIn={true} />} />
                     <Route path='/dashboard/addcard' render={() => <AddNewCard addCard={this.addCard} />} />
                     <Route path='/dashboard/edit/:id' render={({ match }) => <EditCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} updateCard={this.updateCard} />} />
                     <Route path='/dashboard/delete/:id' render={({ match }) => <DeleteCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} />} />
-                    <Route path='/dashboard/trades/:id/new' exact render={({ history, match }) => <MakeRequestTrade history={history} card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} cards={this.state.cards} />} />
-                    <Route path='/dashboard/trades/:id' exact render={({ history, match }) => <FetchTrade history={history} trade_id={match.params.id} />} />
+                    <Route path='/dashboard/trades/:id/new' exact render={({ history, match }) => <MakeRequestTrade history={history} card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} cards={this.state.cards} setActionValue={this.setActionValue} setTradeId={this.setTradeId} />} />
+                    <Route path='/dashboard/trades/:id' exact render={({ history, match }) => <FetchTrade history={history} trade_id={match.params.id} clearTradeId={this.clearTradeId} />} />
                     <Route path='/dashboard/trades/' exact render={({ history, match }) => <Trades />} />
                     <Route path='/dashboard/offers/' exact render={({ history, match }) => <Offers />} />
                     <Route path='/dashboard/offers/:id' exact render={({ history, match }) => <FetchOffer history={history} trade_id={match.params.id} removeCard={this.removeCard} />} />

@@ -5,6 +5,7 @@ import {
 import TextField from '@material-ui/core/TextField';
 
 import Radio from '@material-ui/core/Radio';
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -83,8 +84,8 @@ export default function AddNewCard(props) {
         }
     }
     return (
-        <div>
-            <h1>Add New Card</h1>
+        <Container className="home-container">
+            <h1 className="page-title">Add New Card</h1>
             <h3> Card Details </h3>
             <div className="new-card-form">
                 {
@@ -158,10 +159,10 @@ export default function AddNewCard(props) {
                         <div>
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
-                                <FormControlLabel value="excellent" control={<Radio />} label="Excellent" />
-                                <FormControlLabel value="good" control={<Radio />} label="Good" />
-                                <FormControlLabel value="fair" control={<Radio />} label="Fair" />
-                                <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+                                <FormControlLabel value="Excellent" control={<Radio />} label="Excellent" />
+                                <FormControlLabel value="Good" control={<Radio />} label="Good" />
+                                <FormControlLabel value="Fair" control={<Radio />} label="Fair" />
+                                <FormControlLabel value="Poor" control={<Radio />} label="Poor" />
                             </RadioGroup>
                         </div>
                         <div>
@@ -183,7 +184,7 @@ export default function AddNewCard(props) {
 
                 </form>
             </div>
-        </div>
+        </Container>
     )
 
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Container from '@material-ui/core/Container';
+
 import TradeRequests from './TradeRequests'
 
 const tradesURL = "http://localhost:3001/trades/"
@@ -38,12 +40,12 @@ export default class Trades extends Component {
         if (this.state.tradeRequests.length > 0) {
             return <TradeRequests trades={this.state.tradeRequests} />
         }
-        return "No Trades At This Time!"
+        return <h3 className="empty-message">No Trades At This Time!</h3>
     }
     render() {
         return (
-            <div>
-                <h1>Trades</h1>
+            <Container className="home-container">
+                <h1 className="page-title">Trades</h1>
 
                 {
                     this.state.loading ?
@@ -51,7 +53,7 @@ export default class Trades extends Component {
                         :
                         this.renderRequests()
                 }
-            </div>
+            </Container>
         )
     }
 }

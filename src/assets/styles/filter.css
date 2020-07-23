@@ -2,6 +2,9 @@
     padding: 10px;
     display: flex;
     justify-content: space-around;
+    margin: 0px;
+    border-bottom: 1px solid #ced4da;
+    
 }
 
 .search {
@@ -10,3 +13,4 @@
     border-radius: 5px;
     border: 1px solid #ced4da;
 }
+

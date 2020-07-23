@@ -12,6 +12,7 @@ import './assets/styles/newCardForm.css'
 import './assets/styles/userCards.css'
 import './assets/styles/availablecards.css'
 import './assets/styles/trades.css'
+import './assets/styles/offers.css'
 
 
 import Home from './components/Home'
@@ -31,23 +32,25 @@ export default class App extends Component {
   }
 
   autoLogin() {
-    const jwt = window.localStorage.getItem("jwt")
+    if (!this.state.loggedIn) {
+      const jwt = window.localStorage.getItem("jwt")
 
-    if (jwt) {
-      fetch(userURL, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `bearer: ${jwt}`
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (!json.message) {
-            this.logUserIn()
+      if (jwt) {
+        fetch(userURL, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `bearer: ${jwt}`
           }
         })
+          .then(res => res.json())
+          .then(json => {
+            if (!json.message) {
+              this.logUserIn()
+            }
+          })
+      }
     }
   }
   logUserIn = () => {
@@ -61,6 +64,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
+
         {this.state.loggedIn ?
           <Redirect to="/dashboard" />
           :

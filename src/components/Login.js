@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 const loginURL = "http://localhost:3001/login"
 export default class Login extends Component {
@@ -52,8 +53,8 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <div>
-                <h1> Login </h1>
+            <Container className="home-container">
+                <h1 className="page-title"> Login </h1>
                 <form className="login" onSubmit={this.handleSubmit}>
                     <TextField required
                         id="standard-required"
@@ -78,7 +79,7 @@ export default class Login extends Component {
                         :
                         null
                 }
-            </div>
+            </Container>
         )
     }
 }

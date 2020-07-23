@@ -88,7 +88,7 @@ export default function SportsCard(props) {
                     props.loggedIn && !user_id ?
                         <div className="user-card-actions">
                             <Link to={`/dashboard/edit/${id}`} style={{ textDecoration: 'none' }}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
-                            <Button size="small" color="secondary" variant="contained" >Delete Card</Button>
+                            <Button size="small" color="secondary" variant="contained" onClick={() => props.deleteCard(id)}>Delete Card</Button>
                         </div>
                         :
                         null
