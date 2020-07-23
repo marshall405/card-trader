@@ -13,6 +13,7 @@ import './assets/styles/userCards.css'
 import './assets/styles/availablecards.css'
 import './assets/styles/trades.css'
 import './assets/styles/offers.css'
+import './assets/styles/homepage.css'
 
 
 import Home from './components/Home'

@@ -14,24 +14,24 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Header() {
+export default function Header(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        props.setValue(newValue);
     };
     return (
         <header>
 
             < Paper className={classes.root} >
-                <NavLink to="/" onClick={() => handleChange(this, 0)}> <h1>Sports Card Trading</h1> </NavLink>
+                <NavLink to="/"> <h1>Sports Card Trading</h1> </NavLink>
                 <Tabs
-                    value={value}
+                    value={props.value}
                     onChange={handleChange}
                     centered
                 >
-                    <Tab className="nav-link" label="Browse" component={NavLink} to="/" />
+                    <Tab label="home" component={NavLink} to="/" />
+                    <Tab className="nav-link" label="Browse" component={NavLink} to="/cards" />
                     <Tab label="Login" component={NavLink} to="/login" />
                     <Tab label="Signup" component={NavLink} to="/signup" />
                 </Tabs>

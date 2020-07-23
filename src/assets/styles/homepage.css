@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+.jumbotron {
+    position: relative;
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    background-color: rgba(48, 50, 51);
+    color: #fff;
+    padding: 40px;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/jumbo.jpg");
+    opacity: .1;
+}
+.jumbotron > div {
+    text-align: center;
+}
+
+.jumbotron button {
+    color: white;
+    background:#1f59b1; 
+}

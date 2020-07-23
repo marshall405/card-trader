@@ -15,7 +15,9 @@ export default class Login extends Component {
             errors: ""
         }
     }
-
+    componentDidMount() {
+        this.props.setValue(2)
+    }
     handleSubmit = (e) => {
         e.preventDefault()
         fetch(loginURL, {
