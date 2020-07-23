@@ -47,8 +47,6 @@ export default function AddNewCard(props) {
         if (condition && category) {
             const jwt = window.localStorage.getItem("jwt")
             const formData = new FormData();
-
-
             let { first_name, last_name, team, year, condition, category, file } = e.target
 
             formData.append('first_name', first_name.value.trim())
@@ -59,7 +57,6 @@ export default function AddNewCard(props) {
             formData.append('category', category.value)
             formData.append('image', file.files[0])
 
-            console.log(formData)
             fetch(cardURL, {
                 method: "POST",
                 headers: {
@@ -75,6 +72,7 @@ export default function AddNewCard(props) {
                     } else {
                         props.addCard(card)
                         setSuccess(true)
+                        props.setActionValue(1)
                         setTimeout(() => history.push("/dashboard"), 500)
                     }
                 })

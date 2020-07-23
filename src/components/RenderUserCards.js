@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
 
 import SportsCard from '../containers/SportsCard'
 import Filter from "./Filter"
@@ -13,9 +12,6 @@ export default function RenderUserCards(props) {
     const [category, setCategory] = useState("all")
     const [search, setSearch] = useState("")
 
-    useEffect(() => {
-
-    })
     const filterCards = () => {
         return props.cards.filter(card => {
             let player = card.first_name + " " + card.last_name
@@ -24,7 +20,15 @@ export default function RenderUserCards(props) {
     }
     const renderCards = () => {
         const cards = filterCards()
-        return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} deleteCard={props.deleteCard} />)
+        if (cards.length > 0) {
+            return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} deleteCard={props.deleteCard} />)
+        }
+        return (
+            <div style={{ textAlign: 'center' }}>
+                <h3> You have 0 cards! </h3>
+                <Link to={`/dashboard/addcard`}><Button size="small" color="primary" variant="contained" onClick={() => props.setActionValue(2)}>Add New Card</Button> </Link>
+            </div>
+        )
     }
 
     const setFilter = (e) => {

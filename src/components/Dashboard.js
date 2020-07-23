@@ -22,9 +22,7 @@ const delCardURL = `http://localhost:3001/cards/`
 export default class Dashboard extends Component {
 
     constructor(props) {
-        console.log(props)
         super(props)
-
         this.state = {
             cards: [],
             action: 1
@@ -34,6 +32,7 @@ export default class Dashboard extends Component {
     componentDidMount() {
         this.fetchUserCards()
     }
+
     fetchUserCards() {
         fetch(userCardsURL + window.localStorage.getItem("id"), {
             method: "GET",
@@ -45,7 +44,6 @@ export default class Dashboard extends Component {
         })
             .then(res => res.json())
             .then(cards => {
-                console.log(cards)
                 this.setState({ cards })
             })
     }
@@ -57,12 +55,14 @@ export default class Dashboard extends Component {
     updateCard = updatedCard => {
         const cards = [...this.state.cards]
         const indexOfCard = cards.findIndex(card => card.id === updatedCard.id)
+        // replace card with edited card
         cards.splice(indexOfCard, 1, updatedCard)
         this.setState({ cards })
     }
     removeCard = id => {
         const cards = [...this.state.cards]
         const indexOfCard = cards.findIndex(card => card.id === id)
+        // remove card 
         cards.splice(indexOfCard, 1)
         this.setState({ cards })
     }
@@ -110,9 +110,9 @@ export default class Dashboard extends Component {
                 <UserHeader />
                 <UserActions setActionValue={this.setActionValue} action={this.state.action} />
                 <div className="home-container">
-                    <Route path='/dashboard' exact render={() => <RenderUserCards cards={this.state.cards} deleteCard={this.deleteCard} />} />
+                    <Route path='/dashboard' exact render={() => <RenderUserCards cards={this.state.cards} deleteCard={this.deleteCard} setActionValue={this.setActionValue} />} />
                     <Route path='/dashboard/browse' render={() => <RenderCards loggedIn={true} />} />
-                    <Route path='/dashboard/addcard' render={() => <AddNewCard addCard={this.addCard} />} />
+                    <Route path='/dashboard/addcard' render={() => <AddNewCard addCard={this.addCard} setActionValue={this.setActionValue} />} />
                     <Route path='/dashboard/edit/:id' render={({ match }) => <EditCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} updateCard={this.updateCard} />} />
                     <Route path='/dashboard/delete/:id' render={({ match }) => <DeleteCard card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} />} />
                     <Route path='/dashboard/trades/:id/new' exact render={({ history, match }) => <MakeRequestTrade history={history} card_id={match.params.id} card={this.state.cards.find(card => card.id == match.params.id)} cards={this.state.cards} setActionValue={this.setActionValue} setTradeId={this.setTradeId} />} />

@@ -31,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function EditCard(props) {
-    console.log(props)
     const history = useHistory()
     const classes = useStyles()
     const [condition, setCondition] = useState(props.card.condition);
-    console.log(condition)
+
     const [category, setCategory] = useState(props.card.category);
     const [errors, setErrors] = useState("")
     const [success, setSuccess] = useState(false)
+
     const handleChange = (event) => {
         switch (event.target.name) {
             case "condition":
@@ -51,6 +51,7 @@ export default function EditCard(props) {
                 break;
         }
     };
+
     const handleSubmit = e => {
         const jwt = window.localStorage.getItem("jwt")
         e.preventDefault()
