@@ -8,7 +8,7 @@
     flex-basis: 200px;
     flex-grow: 0;
     flex-shrink: 0;
-    box-shadow: 0px 0px 10px #1f59b1;
+    box-shadow: 0px 0px 10px #1e2735;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -29,15 +29,19 @@
 
 .requested-card {
     margin: 0 auto;
-    width: 400px;
-    padding: 30px;
-    background:#1f59b1;
-    color: #fff;
+    display: inline-block;
+    /* width: 370px; */
+    padding: 1px;
+   
+    
 }
 .requested-card, .cards-offered {
-    box-shadow: 1px 1px 2px 2px #1f59b1;
+    /* box-shadow: 1px 1px 2px 2px #1f59b1; */
     border-radius: 5px;
     
+}
+.requested-card h3 {
+    margin: 2px;
 }
 
 .cards-offered {
@@ -45,6 +49,9 @@
     margin-top: 50px;
 }
 
+.cards-offered h3 {
+    margin: 0px;
+}
 .offers {
     display: flex;
 }
@@ -54,3 +61,19 @@
     margin: 5px;
 }
 
+.available-cards-container > div:hover  {
+    /* display: flex; */
+    cursor: pointer;
+}
+.available-cards-container > div  {
+    /* display: flex; */
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+.submit-offer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}

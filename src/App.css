@@ -16,6 +16,27 @@
     color: green;
 }
 
-.card {
-    
+.MuiCardMedia-root {
+    overflow: hidden;
+}
+img {
+    width: 80%;
+    height: 200px;
+    border-radius: 5px; 
+    border: 3px solid goldenrod;
+    box-shadow: 1px 1px 5px 2px black;
+}
+.thumbnail-container {
+
+}
+.thumbnail {
+    width: 90px;
+    height: 90px;
+}
+
+.page-title {
+    color: #1f59b1;
+}
+.empty-message {
+    text-align: center;
 }

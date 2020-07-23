@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 import RequestedCard from '../containers/RequestedCard'
 import AvailableCards from './AvailableCards'
@@ -56,16 +57,21 @@ export default class MakeRequestTrade extends Component {
         })
             .then(res => res.json())
             .then(json => {
-                console.log(json)
+
                 this.setState({ success: true })
-                setTimeout(() => this.props.history.push("/dashboard/trades/"), 400)
+                setTimeout(() => {
+                    this.props.setTradeId(json.cards, json.trade.id)
+
+                     this.props.setActionValue(3)
+                     this.props.history.push("/dashboard/trades/")
+                 }, 400)
 
             })
     }
     render() {
         return (
-            <div>
-                <h1>Request Trade </h1>
+            <Container className="home-container">
+                <h1 className="page-title">Request Trade </h1>
                 <div style={{ textAlign: 'right' }}>
                     <Link to="/dashboard/browse" style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Back to Browsing</Button></Link>
                 </div>
@@ -84,12 +90,12 @@ export default class MakeRequestTrade extends Component {
 
                         <>
                             <RequestedCard card={this.state.requestedCard} />
-                            <AvailableCards cards={this.state.requestedCard} handleSubmitOffer={this.handleSubmitOffer} cards={this.props.cards} />
+                            <AvailableCards handleSubmitOffer={this.handleSubmitOffer} cards={this.props.cards} />
                         </>
 
 
                 }
-            </div>
+            </Container>
         )
     }
 }

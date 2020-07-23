@@ -24,7 +24,7 @@ export default function RenderUserCards(props) {
     }
     const renderCards = () => {
         const cards = filterCards()
-        return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} />)
+        return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} deleteCard={props.deleteCard} />)
     }
 
     const setFilter = (e) => {
@@ -34,8 +34,9 @@ export default function RenderUserCards(props) {
         setSearch(e.target.value)
     }
     return (
-        <Container maxWidth="xl" className="home-container">
+        <Container className="home-container">
             <Filter setFilter={setFilter} setSearch={handleSearch} />
+            <h1 className="page-title"> Viewing Your Cards</h1>
             <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
                 {renderCards()}
             </Grid>

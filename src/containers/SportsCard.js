@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import IMG from '../assets/images/download.jpg'
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
-import CardHeader from '@material-ui/core/CardHeader';
+
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import Typography from '@material-ui/core/Typography';
 
 
@@ -55,7 +52,7 @@ export default function SportsCard(props) {
                 {toggle ?
                     <CardContent className={classes.root}>
                         <CardMedia style={{ textAlign: "center" }}>
-                            <img src={IMG} />
+                            <img src={img_url} />
                         </CardMedia>
                         <Typography align="center" className={classes.title} color="textSecondary" gutterBottom>
                             {first_name + ' ' + last_name}
@@ -91,7 +88,7 @@ export default function SportsCard(props) {
                     props.loggedIn && !user_id ?
                         <div className="user-card-actions">
                             <Link to={`/dashboard/edit/${id}`} style={{ textDecoration: 'none' }}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
-                            <Button size="small" color="secondary" variant="contained" >Delete Card</Button>
+                            <Button size="small" color="secondary" variant="contained" onClick={() => props.deleteCard(id)}>Delete Card</Button>
                         </div>
                         :
                         null

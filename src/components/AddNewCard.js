@@ -5,10 +5,11 @@ import {
 import TextField from '@material-ui/core/TextField';
 
 import Radio from '@material-ui/core/Radio';
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -45,23 +46,27 @@ export default function AddNewCard(props) {
         e.preventDefault()
         if (condition && category) {
             const jwt = window.localStorage.getItem("jwt")
+            const formData = new FormData();
 
-            let { first_name, last_name, team, year, condition, category } = e.target
+
+            let { first_name, last_name, team, year, condition, category, file } = e.target
+
+            formData.append('first_name', first_name.value.trim())
+            formData.append('last_name', last_name.value.trim())
+            formData.append('team', team.value.trim())
+            formData.append('year', year.value.trim())
+            formData.append('condition', condition.value)
+            formData.append('category', category.value)
+            formData.append('image', file.files[0])
+
+            console.log(formData)
             fetch(cardURL, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "Accept": "application/json",
                     'Authorization': `bearer: ${jwt}`
                 },
-                body: JSON.stringify({
-                    first_name: first_name.value.trim(),
-                    last_name: last_name.value.trim(),
-                    team: team.value.trim(),
-                    year: year.value.trim(),
-                    condition: condition.value,
-                    category: category.value
-                })
+                body: formData
             })
                 .then(res => res.json())
                 .then(card => {
@@ -79,8 +84,8 @@ export default function AddNewCard(props) {
         }
     }
     return (
-        <div>
-            <h1>Add New Card</h1>
+        <Container className="home-container">
+            <h1 className="page-title">Add New Card</h1>
             <h3> Card Details </h3>
             <div className="new-card-form">
                 {
@@ -154,10 +159,10 @@ export default function AddNewCard(props) {
                         <div>
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
-                                <FormControlLabel value="excellent" control={<Radio />} label="Excellent" />
-                                <FormControlLabel value="good" control={<Radio />} label="Good" />
-                                <FormControlLabel value="fair" control={<Radio />} label="Fair" />
-                                <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+                                <FormControlLabel value="Excellent" control={<Radio />} label="Excellent" />
+                                <FormControlLabel value="Good" control={<Radio />} label="Good" />
+                                <FormControlLabel value="Fair" control={<Radio />} label="Fair" />
+                                <FormControlLabel value="Poor" control={<Radio />} label="Poor" />
                             </RadioGroup>
                         </div>
                         <div>
@@ -179,7 +184,48 @@ export default function AddNewCard(props) {
 
                 </form>
             </div>
-        </div>
+        </Container>
     )
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fetch(cardURL, {
+//     method: "POST",
+//     headers: {
+//         "Accept": "application/json",
+//         'Authorization': `bearer: ${jwt}`
+//     },
+//     body: JSON.stringify({
+//         first_name: first_name.value.trim(),
+//         last_name: last_name.value.trim(),
+//         team: team.value.trim(),
+//         year: year.value.trim(),
+//         condition: condition.value,
+//         category: category.value,
+//         image: file.files[0]
+//     })
+// })
+//     .then(res => res.json())
+//     .then(card => {
+//         if (card.message) {
+//             setErrors(card.message)
+//         } else {
+//             props.addCard(card)
+//             setSuccess(true)
+//             setTimeout(() => history.push("/dashboard"), 500)
+//         }
+//     })

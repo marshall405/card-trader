@@ -35,6 +35,7 @@ export default function EditCard(props) {
     const history = useHistory()
     const classes = useStyles()
     const [condition, setCondition] = useState(props.card.condition);
+    console.log(condition)
     const [category, setCategory] = useState(props.card.category);
     const [errors, setErrors] = useState("")
     const [success, setSuccess] = useState(false)
@@ -83,7 +84,7 @@ export default function EditCard(props) {
     }
     return (
         <div>
-            <h1> Edit Card</h1>
+            <h1 className="page-title"> Edit Card</h1>
             <h3> Card Details </h3>
             <div className="new-card-form">
                 {
@@ -98,7 +99,9 @@ export default function EditCard(props) {
                         :
                         null
                 }
-                <img src={props.card.img_url} />
+                <div className="edit-card-image-container">
+                    <img src={props.card.img_url} className="edit-card-image" />
+                </div>
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                     <div className="player-form">
                         <TextField

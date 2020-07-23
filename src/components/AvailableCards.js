@@ -14,6 +14,7 @@ export default class AvailableCards extends Component {
 
     componentDidMount() {
         const availableCards = this.props.cards.filter(card => {
+            console.log(card.trade_id)
             if (card.trade_id) {
                 return false
             }
@@ -35,7 +36,7 @@ export default class AvailableCards extends Component {
     }
 
     renderAvailableCards() {
-        return this.state.availableCards.map(card => <DisplayAvailableCard key={card.id} card={card} toggleSelectCard={this.toggleSelectCard} />)
+        return this.state.availableCards.map(card => <DisplayAvailableCard key={card.id} card={card} toggleSelectCard={this.toggleSelectCard} clickCard={true} />)
     }
     handleSubmitOffer = () => {
         this.props.handleSubmitOffer(this.state.cardsIDsForOffer)
@@ -43,7 +44,8 @@ export default class AvailableCards extends Component {
     render() {
         return (
             <div>
-                <h3> Your Available Cards For Trade</h3>
+                <h3 className="page-title"> Your Available Cards For Trade</h3>
+                <div className="submit-offer-container">
                 <p>Select 1 or more cards you are willing to offer</p>
                 {
                     this.state.cardsIDsForOffer.length > 0 ?
@@ -51,12 +53,15 @@ export default class AvailableCards extends Component {
                         :
                         null
                 }
+                </div>
                 <div className="available-cards-container">
                     {
                         this.state.availableCards.length === 0 ?
                             <h3>No Available Cards to Offer!"</h3>
                             :
-                            this.renderAvailableCards()
+                            
+                                this.renderAvailableCards()
+                            
                     }
                 </div>
             </div>

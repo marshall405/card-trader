@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+ import Container from '@material-ui/core/Container'
 import ViewOffer from '../containers/ViewOffer'
 const tradeURL = "http://localhost:3001/offers/"
 export default class FetchTrade extends Component {
@@ -62,8 +62,8 @@ export default class FetchTrade extends Component {
     }
     render() {
         return (
-            <div>
-                <h3>Trade {this.props.trade_id}</h3>
+            <Container className="home-container">
+                <h3 className="page-title">Viewing Offer</h3>
                 {
                     this.state.success ? <h3 className="success"> Trade has been confirmed!</h3> : null
                 }
@@ -73,7 +73,7 @@ export default class FetchTrade extends Component {
                         :
                         <ViewOffer trade={this.state.trade} acceptOffer={this.acceptOffer} declineOffer={this.declineOffer} />
                 }
-            </div>
+            </Container>
         )
     }
 }

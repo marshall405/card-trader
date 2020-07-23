@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Container from '@material-ui/core/Container';
 
 
 import TradeOffers from './TradeOffers'
@@ -40,12 +41,12 @@ export default class Offers extends Component {
         if (this.state.tradeOffers.length > 0) {
             return <TradeOffers trades={this.state.tradeOffers} />
         }
-        return "No Offers At This Time!"
+        return <h3 className="empty-message">No Offers At This Time!</h3>
     }
     render() {
         return (
-            <div>
-                <h1>Offers</h1>
+            <Container className="home-container">
+                <h1 className="page-title">Offers</h1>
 
                 {
                     this.state.loading ?
@@ -53,7 +54,7 @@ export default class Offers extends Component {
                         :
                         this.renderOffers()
                 }
-            </div>
+            </Container>
         )
     }
 }

@@ -21,14 +21,12 @@ export default function UserHeader() {
         setValue(newValue);
     };
     return (
-        <header>
+        <header className="user-header-container">
 
-            < Paper className={classes.root} >
-                <NavLink to="/" onClick={() => handleChange(this, 0)}> <h2>{window.localStorage.getItem("username")}</h2> </NavLink>
+            < Paper className="user-header" >
+                <NavLink to="/dashboard" onClick={() => handleChange(this, 0)}> <h2>{window.localStorage.getItem("username")}</h2> </NavLink>
 
                 <Tab label="Logout" component={NavLink} to="/logout" />
-
-
             </Paper >
         </header >
     )

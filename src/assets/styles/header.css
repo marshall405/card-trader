@@ -18,3 +18,28 @@ header a {
 .PrivateTabIndicator-root-2 {
     color: #1f59b1;
 }
+
+
+
+
+/* USER HEADER */
+
+.MuiPaper-root.user-header{
+    background: rgba(31, 89, 177, .1);
+}
+.user-header {
+    display: flex;
+    padding: 0px 30px;
+}
+
+.user-header > *:hover {    
+    color: red;
+}
+
+
+.user-actions {
+    /* border-bottom: 1px solid red;  */
+    box-shadow: 1px 0px 10px #1f59b1;
+}
+
+
