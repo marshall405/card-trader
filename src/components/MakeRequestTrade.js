@@ -7,8 +7,8 @@ import Container from '@material-ui/core/Container';
 import RequestedCard from '../containers/RequestedCard'
 import AvailableCards from './AvailableCards'
 
-const cardURL = "http://localhost:3001/cards/"
-const makeTradeOfferURL = "http://localhost:3001/trades"
+const cardURL = "https://evening-crag-02028.herokuapp.com/cards/"
+const makeTradeOfferURL = "https://evening-crag-02028.herokuapp.com/trades"
 export default class MakeRequestTrade extends Component {
 
     constructor(props) {
@@ -62,9 +62,9 @@ export default class MakeRequestTrade extends Component {
                 setTimeout(() => {
                     this.props.setTradeId(json.cards, json.trade.id)
 
-                     this.props.setActionValue(3)
-                     this.props.history.push("/dashboard/trades/")
-                 }, 400)
+                    this.props.setActionValue(3)
+                    this.props.history.push("/dashboard/trades/")
+                }, 400)
 
             })
     }

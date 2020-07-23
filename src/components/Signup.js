@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
-const userURL = "http://localhost:3001/users"
+const userURL = "https://evening-crag-02028.herokuapp.com/users"
 export default class Signup extends Component {
     state = {
         errors: [],

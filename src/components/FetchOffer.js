@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
- import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container'
 import ViewOffer from '../containers/ViewOffer'
-const tradeURL = "http://localhost:3001/offers/"
+const tradeURL = "https://evening-crag-02028.herokuapp.com/offers/"
 export default class FetchTrade extends Component {
     constructor(props) {
         super(props)

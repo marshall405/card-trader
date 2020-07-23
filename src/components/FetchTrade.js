@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 import ViewTrade from '../containers/ViewTrade'
-const tradeURL = "http://localhost:3001/trades/"
+const tradeURL = "https://evening-crag-02028.herokuapp.com/trades/"
 export default class FetchTrade extends Component {
     constructor(props) {
         super(props)

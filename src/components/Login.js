@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
-const loginURL = "http://localhost:3001/login"
+const loginURL = "https://evening-crag-02028.herokuapp.com/login"
 export default class Login extends Component {
 
     constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import DisplayAvailableCard from '../containers/DisplayAvailableCard'
-const userCardsURL = `http://localhost:3001/cards/user/`
+const userCardsURL = `https://evening-crag-02028.herokuapp.com/cards/user/`
 export default class AvailableCards extends Component {
     constructor(props) {
         super(props)
@@ -46,22 +46,22 @@ export default class AvailableCards extends Component {
             <div>
                 <h3 className="page-title"> Your Available Cards For Trade</h3>
                 <div className="submit-offer-container">
-                <p>Select 1 or more cards you are willing to offer</p>
-                {
-                    this.state.cardsIDsForOffer.length > 0 ?
-                        <Button size="small" color="primary" variant="contained" onClick={this.handleSubmitOffer} >Submit Offer</Button>
-                        :
-                        null
-                }
+                    <p>Select 1 or more cards you are willing to offer</p>
+                    {
+                        this.state.cardsIDsForOffer.length > 0 ?
+                            <Button size="small" color="primary" variant="contained" onClick={this.handleSubmitOffer} >Submit Offer</Button>
+                            :
+                            null
+                    }
                 </div>
                 <div className="available-cards-container">
                     {
                         this.state.availableCards.length === 0 ?
                             <h3>No Available Cards to Offer!"</h3>
                             :
-                            
-                                this.renderAvailableCards()
-                            
+
+                            this.renderAvailableCards()
+
                     }
                 </div>
             </div>

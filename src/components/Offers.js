@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 
 
 import TradeOffers from './TradeOffers'
-const tradesURL = "http://localhost:3001/offers/"
+const tradesURL = "https://evening-crag-02028.herokuapp.com/offers/"
 export default class Offers extends Component {
     constructor(props) {
         super(props)

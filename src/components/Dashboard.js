@@ -17,8 +17,8 @@ import Trades from './Trades'
 import FetchOffer from './FetchOffer'
 import Offers from './Offers'
 
-const userCardsURL = `http://localhost:3001/cards/user/`
-const delCardURL = `http://localhost:3001/cards/`
+const userCardsURL = `https://evening-crag-02028.herokuapp.com/cards/user/`
+const delCardURL = `https://evening-crag-02028.herokuapp.com/cards/`
 export default class Dashboard extends Component {
 
     constructor(props) {

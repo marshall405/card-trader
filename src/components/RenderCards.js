@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList';
 
 import SportsCard from '../containers/SportsCard'
-const cardsURL = "http://localhost:3001/cards"
+const cardsURL = "https://evening-crag-02028.herokuapp.com/cards"
 
 
 

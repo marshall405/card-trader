@@ -13,7 +13,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
-const cardURL = "http://localhost:3001/cards"
+const cardURL = "https://evening-crag-02028.herokuapp.com/cards"
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
