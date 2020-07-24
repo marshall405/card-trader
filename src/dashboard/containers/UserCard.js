@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 import SportsCard from '../containers/SportsCard'
+import EditIcon from '../components/EditIcon'
+import DeleteIcon from '../components/DeleteIcon'
 
 const useStyles = makeStyles({
     root: {
@@ -17,12 +20,18 @@ const useStyles = makeStyles({
 
 export default function UserCard(props) {
     const classes = useStyles();
+
+    const deleteCard = () => props.deleteCard(props.card.id)
+
     return (
         <Grid item className={classes.root}>
             <SportsCard card={props.card} />
             <div className="user-card-actions">
-                <Link to={`/dashboard/edit/${props.card.id}`} style={{ textDecoration: 'none' }}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
-                <Button size="small" color="secondary" variant="contained" onClick={() => props.deleteCard(props.card.id)}>Delete Card</Button>
+                <Link to={`/dashboard/edit/${props.card.id}`} style={{ textDecoration: 'none' }}>
+                    <EditIcon />
+                </Link>
+
+                <DeleteIcon deleteCard={deleteCard} />
             </div>
         </Grid>
     )

@@ -19,6 +19,9 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
+import SaveIcon from './SaveIcon';
+import CancelIcon from './CancelIcon';
+
 const editCardURL = "http://localhost:3001/cards/"
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,7 +54,9 @@ export default function EditCard(props) {
                 break;
         }
     };
-
+    const cancel = () => {
+        history.push('/dashboard')
+    }
     const handleSubmit = e => {
         const jwt = window.localStorage.getItem("jwt")
         e.preventDefault()
@@ -186,8 +191,8 @@ export default function EditCard(props) {
                         <input name="file" type="file" />
                     </div> */}
                     <div style={{ textAlign: "center" }}>
-                        <Button type="submit" className="login-button" variant="contained">Save Changes</Button>
-                        <Button variant="contained" color="secondary" onClick={() => history.push("/dashboard")}>Cancel</Button>
+                        <SaveIcon type="submit" />
+                        <CancelIcon cancel={cancel} />
                     </div>
 
                 </form>

@@ -173,7 +173,7 @@ export default function AddNewCard(props) {
                         </div>
                     </div>
                     <div className="file-container">
-                        <label for="file">Upload Card Image</label>
+                        <label htmlFor="file">Upload Card Image</label>
                         <input name="file" type="file" />
                     </div>
                     <div style={{ textAlign: "center" }}>
