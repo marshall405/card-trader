@@ -24,7 +24,7 @@ export default class Home extends Component {
             <div>
                 <Header setValue={this.setValue} value={this.state.tabValue} />
                 <div className="home-container">
-                    <Route path='/' exact render={() => <Homepage setValue={this.setValue} />} />
+                    <Route path='/' exact render={() => <Homepage setValue={this.setValue} value={this.state.tabValue} />} />
                     <Route path='/cards' exact render={() => <RenderCards setValue={this.setValue} />} />
                     <Route path='/signup' exact render={() => <Signup logUserIn={this.props.logUserIn} setValue={this.setValue} />} />
                     <Route path='/login' exact render={() => <Login logUserIn={this.props.logUserIn} setValue={this.setValue} />} />

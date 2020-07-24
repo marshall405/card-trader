@@ -15,7 +15,9 @@ export default class Signup extends Component {
         password: "",
         password_confirmation: ""
     }
-
+    componentDidMount() {
+        this.props.setValue(3)
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()

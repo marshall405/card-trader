@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect, useHistory } from 'react-router-dom'
-// import { Counter } from './features/counter/Counter';
 
 // custom styles
 import './App.css';
@@ -16,8 +15,8 @@ import './assets/styles/offers.css'
 import './assets/styles/homepage.css'
 
 
-import Home from './components/Home'
-import Dashboard from './components/Dashboard'
+import Home from './home/components/Home'
+import Dashboard from './dashboard/components/Dashboard'
 const userURL = "http://localhost:3001/users"
 export default class App extends Component {
 

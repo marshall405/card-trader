@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
-import CardHeader from '@material-ui/core/CardHeader';
+
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
@@ -16,9 +17,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-        // width: 200,
-        height: 250,
-        padding: "10px"
+        width: 310,
+        height: 200,
 
     },
     bullet: {
@@ -27,37 +27,32 @@ const useStyles = makeStyles({
         transform: 'scale(0.8)',
     },
     title: {
-        fontSize: 12,
+        fontSize: 18,
     },
     box: {
         boxShadow: "0px 1px 10px rgba(0,0,0,.5)",
         padding: "13px"
     },
-    small: {
-        fontSize: 11
-    }
 });
-export default function DisplayAvailableCard(props) {
+
+
+export default function SportsCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
-    const [selected, setSelected] = useState(false)
-    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card
-    const toggleSelectCard = (id, e) => {
-        if(props.clickCard){
-        e.stopPropagation()
-        setSelected(!selected)
-        props.toggleSelectCard(id)
-        }
-    }
-    return (
+    const { id, category, img_url, first_name, last_name, team, year, condition } = props.card.info
+    const { user_id, username } = props.card.user
 
-        <Grid item style={selected ? { border: "2px solid blue" } : null} onMouseLeave={() => setToggle(true)} onClick={(e) => toggleSelectCard(id, e)}>
-            <Card className={classes.box} >
-                {/* <Typography align="left" variant="subtitle1" color="textSecondary">
+    return (
+        <Grid item onMouseLeave={() => setToggle(true)}>
+
+            <Card className={classes.box}>
+                <Typography align="left" variant="subtitle1" color="textSecondary">
                     {category}
-                </Typography> */}
+                </Typography>
+
                 {toggle ?
-                    <CardContent className={classes.root + " front"}>
+
+                    <CardContent className={classes.root}>
                         <CardMedia style={{ textAlign: "center" }}>
                             <img src={img_url} />
                         </CardMedia>
@@ -65,27 +60,33 @@ export default function DisplayAvailableCard(props) {
                             {first_name + ' ' + last_name}
                         </Typography>
                     </CardContent>
-                    :
-                    <CardContent className={classes.root}>
 
-                        <Typography className={classes.small} variant="subtitle1" color="textSecondary" gutterBottom>
+                    :
+
+                    <CardContent className={classes.root}>
+                        <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                             Team - {team}
                         </Typography>
-                        <Typography className={classes.small} variant="subtitle1" color="textSecondary" gutterBottom>
+                        <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                             Year - {year}
                         </Typography>
-                        <Typography className={classes.small} variant="subtitle1" color="textSecondary" gutterBottom>
+                        <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                             Condition - {condition}
                         </Typography>
+                        <Typography variant="h6" color="primary" gutterBottom align="right">
+                            {username}
+                        </Typography>
                     </CardContent>
+
                 }
                 <CardActions>
-                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "See Back" : "See Front"}</Button>
                 </CardActions>
-
             </Card >
 
         </Grid >
+
+
 
     )
 }

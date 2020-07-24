@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import Grid from '@material-ui/core/Grid';
 
-import SportsCard from '../containers/SportsCard'
+import UserCard from '../containers/UserCard'
 import Filter from "./Filter"
 export default function RenderUserCards(props) {
     const [category, setCategory] = useState("all")
@@ -21,7 +21,7 @@ export default function RenderUserCards(props) {
     const renderCards = () => {
         const cards = filterCards()
         if (cards.length > 0) {
-            return cards.map(card => <SportsCard key={card.id} card={card} loggedIn={true} deleteCard={props.deleteCard} />)
+            return cards.map(card => <UserCard key={card.id} card={card} deleteCard={props.deleteCard} />)
         }
         return (
             <div style={{ textAlign: 'center' }}>

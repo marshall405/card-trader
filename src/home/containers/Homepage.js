@@ -3,7 +3,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
-export default function Homepage() {
+export default function Homepage(props) {
+
+    if (props.value !== 0) props.setValue(0)
     return (
         <div className="jumbotron">
             <div className="overlay"></div>

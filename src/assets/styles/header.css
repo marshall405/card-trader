@@ -18,7 +18,10 @@ header a {
 .PrivateTabIndicator-root-2 {
     color: #1f59b1;
 }
+.menu {
+    color: #1f59b1;
 
+}
 
 
 
@@ -40,6 +43,7 @@ header a {
 .user-actions {
     /* border-bottom: 1px solid red;  */
     box-shadow: 1px 0px 10px #1f59b1;
+
 }
 
 

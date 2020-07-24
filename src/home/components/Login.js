@@ -62,7 +62,6 @@ export default class Login extends Component {
                         id="standard-required"
                         label="Username"
                         name="username"
-                        // value={this.state.username}
                         onKeyUp={this.handleKeyUp}
                     />
                     <TextField

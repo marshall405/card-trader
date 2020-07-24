@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList';
 
-import SportsCard from '../containers/SportsCard'
+import TradeCard from '../containers/TradeCard'
 const cardsURL = "http://localhost:3001/cards"
 
 
@@ -51,7 +51,7 @@ export default class RenderCards extends Component {
             return <h3> Sorry, No Cards to show at this time</h3>
         }
         const cards = this.filterCards()
-        return cards.map(card => <SportsCard key={card.info.id} card={card} loggedIn={this.props.loggedIn} />)
+        return cards.map(card => <TradeCard key={card.info.id} card={card.info} />)
     }
 
     setFilter = e => this.setState({ category: e.target.value })
@@ -63,7 +63,7 @@ export default class RenderCards extends Component {
                 <Filter setFilter={this.setFilter} setSearch={this.setSearch} />
                 <h1 className="page-title"> Viewing All Cards</h1>
                 {this.state.loading ?
-                    <CircularProgress />
+                    <CircularProgress align="center" />
                     :
                     <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
                         {this.renderCards()}
