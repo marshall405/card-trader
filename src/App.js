@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 // custom styles
 import './App.css';
@@ -13,6 +13,9 @@ import './assets/styles/availablecards.css'
 import './assets/styles/trades.css'
 import './assets/styles/offers.css'
 import './assets/styles/homepage.css'
+import './assets/styles/main.css'
+import './assets/styles/preview.css'
+import './assets/styles/show.css'
 
 
 import Home from './home/components/Home'
@@ -27,7 +30,7 @@ export default class App extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.autoLogin()
   }
 
@@ -66,7 +69,7 @@ export default class App extends Component {
       <Router>
 
         {this.state.loggedIn ?
-          <Redirect to="/dashboard" />
+          <Redirect to="/dashboard/" /> // MUST CHANGE TO DASHBOARD!!!!!!!!!!!!!
           :
           <Home logUserIn={this.logUserIn} />
         }

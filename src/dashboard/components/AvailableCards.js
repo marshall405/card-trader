@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import DisplayAvailableCard from '../containers/DisplayAvailableCard'
-const userCardsURL = `http://localhost:3001/cards/user/`
 export default class AvailableCards extends Component {
     constructor(props) {
         super(props)
@@ -14,7 +13,6 @@ export default class AvailableCards extends Component {
 
     componentDidMount() {
         const availableCards = this.props.cards.filter(card => {
-            console.log(card.trade_id)
             if (card.trade_id) {
                 return false
             }

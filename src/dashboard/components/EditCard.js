@@ -1,21 +1,11 @@
 import React, { useState } from 'react'
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-    useHistory,
-    useLocation
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 
 import Radio from '@material-ui/core/Radio';
-import Button from '@material-ui/core/Button';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -34,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function EditCard(props) {
+    console.log(props)
     const history = useHistory()
     const classes = useStyles()
     const [condition, setCondition] = useState(props.card.condition);
@@ -60,7 +51,7 @@ export default function EditCard(props) {
     const handleSubmit = e => {
         const jwt = window.localStorage.getItem("jwt")
         e.preventDefault()
-        let { first_name, last_name, team, year, condition, category } = e.target
+        let { title, first_name, last_name, team, year, condition, category } = e.target
         fetch(editCardURL + props.card.id, {
             method: "PUT",
             headers: {
@@ -69,6 +60,7 @@ export default function EditCard(props) {
                 'Authorization': `bearer: ${jwt}`
             },
             body: JSON.stringify({
+                title: title.value.trim(),
                 first_name: first_name.value.trim(),
                 last_name: last_name.value.trim(),
                 team: team.value.trim(),
@@ -106,10 +98,24 @@ export default function EditCard(props) {
                         null
                 }
                 <div className="edit-card-image-container">
-                    <img src={props.card.img_url} className="edit-card-image" />
+                    <img src={props.card.img_url} className="edit-card-image" alt="edit player" />
                 </div>
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                     <div className="player-form">
+                        <TextField
+                            required
+                            defaultValue={props.card.title}
+                            id="standard-full-width"
+                            label="Card Description"
+                            name="title"
+                            style={{ margin: 8 }}
+                            placeholder="card description"
+                            fullWidth
+                            margin="normal"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
                         <TextField
                             required
                             defaultValue={props.card.first_name}
@@ -171,10 +177,11 @@ export default function EditCard(props) {
                         <div>
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
-                                <FormControlLabel value="Excellent" control={<Radio />} label="Excellent" />
-                                <FormControlLabel value="Good" control={<Radio />} label="Good" />
-                                <FormControlLabel value="Fair" control={<Radio />} label="Fair" />
-                                <FormControlLabel value="Poor" control={<Radio />} label="Poor" />
+                                <FormControlLabel value="Brand New" control={<Radio />} label="Brand New" />
+                                <FormControlLabel value="Like New" control={<Radio />} label="Like New" />
+                                <FormControlLabel value="Very Good" control={<Radio />} label="Very Good" />
+                                <FormControlLabel value="Acceptable" control={<Radio />} label="Acceptable" />
+                                <FormControlLabel value="Not Specified" control={<Radio />} label="Not Specified" />
                             </RadioGroup>
                         </div>
                         <div>

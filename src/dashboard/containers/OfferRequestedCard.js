@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
@@ -33,15 +32,11 @@ const useStyles = makeStyles({
         boxShadow: "0px 1px 10px rgba(0,0,0,.5)",
         padding: "13px"
     },
-    flex: {
-        display: 'flex',
-        justifyContent: 'space-between'
-    }
 });
 export default function RequestedCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
-    const { id, img_url, first_name, last_name, team, year, condition } = props.card.card || props.card
+    const { img_url, first_name, last_name, team, year, condition } = props.card.card || props.card
 
     return (
         <Grid item onMouseLeave={() => setToggle(true)} style={{ width: "380px" }}>
@@ -68,9 +63,8 @@ export default function RequestedCard(props) {
                         </Typography>
                     </CardContent>
                 }
-                <CardActions className={classes.flex}>
+                <CardActions>
                     <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "See Back" : "See Front"}</Button>
-                    <Link to={`/dashboard/cards/${id}`} ><Button size="small" > View Page</Button> </Link>
                 </CardActions>
 
             </Card >

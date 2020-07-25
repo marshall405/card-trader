@@ -1,27 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 import Grid from '@material-ui/core/Grid';
 
 import UserCard from '../containers/UserCard'
-import Filter from "./Filter"
-export default function RenderUserCards(props) {
-    const [category, setCategory] = useState("all")
-    const [search, setSearch] = useState("")
 
-    const filterCards = () => {
-        return props.cards.filter(card => {
-            let player = card.first_name + " " + card.last_name
-            return ((card.category === category) || category === "all") && (player.toLocaleLowerCase().includes(search.toLocaleLowerCase().trim()))
-        })
-    }
+export default function RenderUserCards(props) {
+
     const renderCards = () => {
-        const cards = filterCards()
-        if (cards.length > 0) {
-            return cards.map(card => <UserCard key={card.id} card={card} deleteCard={props.deleteCard} />)
+        if (props.cards.length > 0) {
+            return props.cards.map(card => <UserCard key={card.id} card={card} deleteCard={props.deleteCard} />)
         }
         return (
             <div style={{ textAlign: 'center' }}>
@@ -31,16 +22,10 @@ export default function RenderUserCards(props) {
         )
     }
 
-    const setFilter = (e) => {
-        setCategory(e.target.value)
-    }
-    const handleSearch = (e) => {
-        setSearch(e.target.value)
-    }
     return (
         <Container className="home-container">
-            <Filter setFilter={setFilter} setSearch={handleSearch} />
-            <h1 className="page-title"> Viewing Your Cards</h1>
+
+            <h1 className="page-title"> My Cards</h1>
             <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
                 {renderCards()}
             </Grid>

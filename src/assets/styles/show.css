@@ -1,0 +1,16 @@
+.show {
+    display: flex;
+}
+
+.show-img-container {
+    margin-right: 50px;
+}
+.show-img-container img {
+    width: 400px;
+    height: 400px;
+}
+.show .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

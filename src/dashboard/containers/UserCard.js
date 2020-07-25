@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import SvgIcon from '@material-ui/core/SvgIcon';
 
-import SportsCard from '../containers/SportsCard'
+import SportsCard from './SportsCard'
 import EditIcon from '../components/EditIcon'
 import DeleteIcon from '../components/DeleteIcon'
 

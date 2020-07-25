@@ -1,13 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import RequestedCard from './RequestedCard'
 import DisplayAvailableCard from './DisplayAvailableCard'
-
-
-import Button from '@material-ui/core/Button';
-
-
-
 
 export default function ViewTrade(props) {
 

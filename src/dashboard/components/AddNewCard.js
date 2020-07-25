@@ -13,6 +13,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
+import PreviewNewCard from './PreviewNewCard'
 const cardURL = "http://localhost:3001/cards"
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,8 +29,14 @@ export default function AddNewCard(props) {
     const classes = useStyles()
     const [condition, setCondition] = useState("");
     const [category, setCategory] = useState("");
+    const [image, setImage] = useState("");
     const [errors, setErrors] = useState("")
     const [success, setSuccess] = useState(false)
+
+    const [title, setTitle] = useState("")
+
+
+
     const handleChange = (event) => {
         switch (event.target.name) {
             case "condition":
@@ -47,8 +54,9 @@ export default function AddNewCard(props) {
         if (condition && category) {
             const jwt = window.localStorage.getItem("jwt")
             const formData = new FormData();
-            let { first_name, last_name, team, year, condition, category, file } = e.target
+            let { title, first_name, last_name, team, year, condition, category, file } = e.target
 
+            formData.append('title', title.value.trim())
             formData.append('first_name', first_name.value.trim())
             formData.append('last_name', last_name.value.trim())
             formData.append('team', team.value.trim())
@@ -67,6 +75,7 @@ export default function AddNewCard(props) {
             })
                 .then(res => res.json())
                 .then(card => {
+                    console.log(card)
                     if (card.message) {
                         setErrors(card.message)
                     } else {
@@ -81,8 +90,9 @@ export default function AddNewCard(props) {
             setErrors("Condition and Category are required!")
         }
     }
+
     return (
-        <Container className="home-container">
+        < Container className="home-container" >
             <h1 className="page-title">Add New Card</h1>
             <h3> Card Details </h3>
             <div className="new-card-form">
@@ -100,6 +110,20 @@ export default function AddNewCard(props) {
                 }
                 <form className={classes.root} autoComplete="off" onSubmit={handleSubmit}>
                     <div className="player-form">
+                        <TextField
+                            required
+                            id="standard-full-width"
+                            label="Card Description"
+                            name="title"
+                            style={{ margin: 8 }}
+                            placeholder="Card Description"
+                            fullWidth
+                            margin="normal"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
                         <TextField
                             required
                             id="standard-full-width"
@@ -157,10 +181,11 @@ export default function AddNewCard(props) {
                         <div>
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
-                                <FormControlLabel value="Excellent" control={<Radio />} label="Excellent" />
-                                <FormControlLabel value="Good" control={<Radio />} label="Good" />
-                                <FormControlLabel value="Fair" control={<Radio />} label="Fair" />
-                                <FormControlLabel value="Poor" control={<Radio />} label="Poor" />
+                                <FormControlLabel value="Brand New" control={<Radio />} label="Brand New" />
+                                <FormControlLabel value="Like New" control={<Radio />} label="Like New" />
+                                <FormControlLabel value="Very Good" control={<Radio />} label="Very Good" />
+                                <FormControlLabel value="Acceptable" control={<Radio />} label="Acceptable" />
+                                <FormControlLabel value="Not Specified" control={<Radio />} label="Not Specified" />
                             </RadioGroup>
                         </div>
                         <div>
@@ -174,7 +199,7 @@ export default function AddNewCard(props) {
                     </div>
                     <div className="file-container">
                         <label htmlFor="file">Upload Card Image</label>
-                        <input name="file" type="file" />
+                        <input name="file" type="file" onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))} />
                     </div>
                     <div style={{ textAlign: "center" }}>
                         <Button type="submit" className="login-button" variant="contained">Create New Card</Button>
@@ -182,7 +207,16 @@ export default function AddNewCard(props) {
 
                 </form>
             </div>
-        </Container>
+            {
+                title ?
+                    <>
+                        <h2> Card Preview </h2>
+                        <PreviewNewCard title={title} condition={condition} category={category} img={image} />
+                    </>
+                    :
+                    null
+            }
+        </Container >
     )
 
 }

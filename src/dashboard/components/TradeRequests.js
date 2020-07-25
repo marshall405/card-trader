@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 
 export default class TradeRequests extends Component {
@@ -17,7 +17,7 @@ export default class TradeRequests extends Component {
                                     <h3> Status: {trade.status} </h3>
                                     <h5>Requested Card</h5>
                                     <div className="thumbnail-container">
-                                        <img src={trade.requested_card.img_url} className="thumbnail" />
+                                        <img src={trade.requested_card.img_url} className="thumbnail" alt="player card" />
                                     </div>
                                     <ul>
                                         <li> {trade.requested_card.first_name} {trade.requested_card.last_name}</li>

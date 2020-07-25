@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 
 export default function Homepage(props) {
@@ -12,13 +12,13 @@ export default function Homepage(props) {
             <h1> Start trading today!</h1>
             <div>
                 <p> You can start browsing now!</p>
-                <Link to={`/cards`}><Button size="small" variant="contained" >View Cards</Button> </Link>
+                <Link to={`/cards`}><Button size="small" variant="contained" onClick={() => props.setValue(1)}>View Cards</Button> </Link>
             </div>
             <div>
                 <p> When you're ready to start adding your cards, puting in trade reqeusts, viewing your trades or accepting offers! </p>
                 <div>
-                    <Link to={`/login`}><Button size="small" variant="contained" >Login</Button> </Link>
-                    <Link to={`/signup`}><Button size="small" variant="contained" >Signup</Button> </Link>
+                    <Link to={`/login`}><Button size="small" variant="contained" onClick={() => props.setValue(2)}>Login</Button> </Link>
+                    <Link to={`/signup`}><Button size="small" variant="contained" onClick={() => props.setValue(3)}>Signup</Button> </Link>
                 </div>
             </div>
 

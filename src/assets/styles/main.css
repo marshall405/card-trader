@@ -1,0 +1,11 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.main > :first-child {
+    flex-grow: 1; 
+}
+.main .content {
+    flex-grow: 3;
+}

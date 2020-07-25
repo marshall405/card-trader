@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import Filter from './Filter'
-// material UI
+import Search from './Search'
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Container from '@material-ui/core/Container';
-
 import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
 
-import TradeCard from '../containers/TradeCard'
+import PreviewCard from '../containers/PreviewCard'
 const cardsURL = "http://localhost:3001/cards"
-
-
-
 
 export default class RenderCards extends Component {
 
@@ -20,7 +16,8 @@ export default class RenderCards extends Component {
         this.state = {
             cards: [],
             loading: true,
-            category: "all",
+            category: "All",
+            condition: "All",
             search: ""
         }
     }
@@ -41,7 +38,11 @@ export default class RenderCards extends Component {
     filterCards() {
         return this.state.cards.filter(card => {
             let player = card.info.first_name + " " + card.info.last_name
-            return ((card.info.category === this.state.category) || this.state.category === "all") && (player.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase().trim()))
+            return (
+                (card.info.category === this.state.category) || this.state.category === "All") &&
+                (player.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase().trim()) &&
+                    (card.info.condition === this.state.condition || this.state.condition === "All")
+                )
         })
 
     }
@@ -51,24 +52,33 @@ export default class RenderCards extends Component {
             return <h3> Sorry, No Cards to show at this time</h3>
         }
         const cards = this.filterCards()
-        return cards.map(card => <TradeCard key={card.info.id} card={card.info} />)
+        return cards.map(card => <PreviewCard key={card.info.id} card={card.info} requestedTrades={card.trades.requested_trades} />)
     }
 
-    setFilter = e => this.setState({ category: e.target.value })
+    setCategory = category => this.setState({ category })
+    setCondition = condition => this.setState({ condition })
     setSearch = e => this.setState({ search: e.target.value })
 
     render() {
         return (
             <Container maxWidth="xl" className="home-container">
-                <Filter setFilter={this.setFilter} setSearch={this.setSearch} />
-                <h1 className="page-title"> Viewing All Cards</h1>
-                {this.state.loading ?
-                    <CircularProgress align="center" />
-                    :
-                    <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
-                        {this.renderCards()}
-                    </Grid>
-                }
+                <Search setSearch={this.setSearch} />
+
+                <h1 className="page-title"> All Cards</h1>
+
+                <div className="main">
+
+                    <Filter setCategory={this.setCategory} setCondition={this.setCondition} category={this.state.category} condition={this.state.condition} />
+                    <div className="content">
+                        {this.state.loading ?
+                            <CircularProgress align="center" />
+                            :
+                            <Grid container direction="column" justify="center" spacing={1}>
+                                {this.renderCards()}
+                            </Grid>
+                        }
+                    </div>
+                </div>
             </Container>
         )
     }

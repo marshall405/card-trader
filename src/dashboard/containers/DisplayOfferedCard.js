@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
@@ -40,30 +41,28 @@ const useStyles = makeStyles({
         '&:hover': {
             cursor: "pointer"
         }
+    },
+    flex: {
+        display: 'flex',
+        justifyContent: 'space-between'
+
     }
 });
 export default function DisplayAvailableCard(props) {
     const classes = useStyles();
-    const [toggle, setToggle] = useState(true)
     const [show, setShow] = useState(false)
-    const [selected, setSelected] = useState(false)
+    const [toggle, setToggle] = useState(true)
+
     const { title, id, img_url, first_name, last_name, team, year, condition } = props.card
-    const toggleSelectCard = (id, e) => {
-        if (props.clickCard) {
-            e.stopPropagation()
-            setSelected(!selected)
-            props.toggleSelectCard(id)
-        }
-    }
+
     const viewImage = () => {
-        if (!props.clickCard) {
-            //only view image in Offer page
-            setShow(!show)
-        }
+
+        setShow(!show)
+
     }
     return (
 
-        <Grid item style={selected ? { border: "2px solid #1f59b1", borderRadius: "5px" } : null} onMouseLeave={() => setToggle(true)} onClick={(e) => toggleSelectCard(id, e)}>
+        <Grid item onMouseLeave={() => setToggle(true)} >
             <Card className={classes.box} >
 
                 {toggle ?
@@ -91,8 +90,9 @@ export default function DisplayAvailableCard(props) {
                         </Typography>
                     </CardContent>
                 }
-                <CardActions>
+                <CardActions className={classes.flex}>
                     <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Link to={`/dashboard/cards/${id}`} ><Button size="small" > View Page</Button> </Link>
                 </CardActions>
 
             </Card >
