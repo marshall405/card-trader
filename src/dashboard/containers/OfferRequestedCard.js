@@ -64,7 +64,7 @@ export default function RequestedCard(props) {
                     </CardContent>
                 }
                 <CardActions>
-                    <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "Details" : "Front"}</Button>
                 </CardActions>
 
             </Card >

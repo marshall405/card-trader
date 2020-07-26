@@ -92,7 +92,7 @@ export default function DisplayAvailableCard(props) {
                     </CardContent>
                 }
                 <CardActions>
-                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "Details" : "Front"}</Button>
                 </CardActions>
 
             </Card >

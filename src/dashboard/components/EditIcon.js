@@ -8,6 +8,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 
 const useStyles = makeStyles({
     root: {
+        color: '#7badf7',
         '&:hover': {
             color: '#1f59b1'
         }

@@ -9,9 +9,15 @@ export default function Homepage(props) {
     return (
         <div className="jumbotron">
             <div className="overlay"></div>
-            <h1> Start trading today!</h1>
+            <h1 style={{ textAlign: 'center', margin: "0px 50px" }}> Start trading today!</h1>
+            <ul>
+                <li> <h3>FOOTBALL</h3> </li>
+                <li> <h3>BASKETBALL</h3> </li>
+                <li> <h3>BASEBALL</h3></li>
+
+            </ul>
             <div>
-                <p> You can start browsing now!</p>
+                <p> Start browsing now!</p>
                 <Link to={`/cards`}><Button size="small" variant="contained" onClick={() => props.setValue(1)}>View Cards</Button> </Link>
             </div>
             <div>

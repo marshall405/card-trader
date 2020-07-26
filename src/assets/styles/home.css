@@ -1,9 +1,39 @@
+.home {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(48, 50, 51, .9);
+  margin: 0px;
+}
+
+.home .page-title {
+  color: #fff;
+}
+
 .home-container {
     max-width: 1250px;
     margin: 0px auto 50px auto;
     /* background: #f0f0f0; */
     /* padding: 15px;   */
     color: #303030;
+  }
+
+.home .MuiFormLabel-root{
+  color: rgba(255, 255, 255, .4);
+}
+  .home .MuiInputBase-root {
+    color: #fff;
+  }
+
+  .home .MuiInput-underline:before{
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .home .MuiFormLabel-root.Mui-focused {
+    color: #fff;
+  }
+
+  .home .filter{
+    background: #fff;
   }
 
   

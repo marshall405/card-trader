@@ -28,13 +28,14 @@ export default function ViewOffer(props) {
             <div style={{ textAlign: 'right' }}>
                 <Link to="/dashboard/offers" style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Back to Offers</Button></Link>
             </div>
+            <div className="main-content">
             <div className="offer-actions">
-                <h4> {props.trade.trader.username.toUpperCase()} has made you an offer!</h4>
+                <h4> {props.trade.trader.username.toUpperCase()} has made you an offer for your {props.trade.requested_card.first_name + " " + props.trade.requested_card.last_name} card!</h4>
                 <Button size="small" color="primary" variant="contained" onClick={acceptOffer}>Accept</Button>
                 <Button size="small" color="secondary" variant="contained" onClick={declineOffer}>Decline</Button>
             </div>
             <div className="requested-card">
-                <h3 className="page-title">Card Being Requested</h3>
+                <h3 className="page-title">Card requested </h3>
                 <OfferRequestedCard card={props.trade.requested_card} />
 
             </div>
@@ -45,6 +46,7 @@ export default function ViewOffer(props) {
                 <div className="offers">
                     {renderOffering()}
                 </div>
+            </div>
             </div>
         </Container>
     )

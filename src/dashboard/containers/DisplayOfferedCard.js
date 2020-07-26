@@ -91,7 +91,7 @@ export default function DisplayAvailableCard(props) {
                     </CardContent>
                 }
                 <CardActions className={classes.flex}>
-                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "See Back" : "See Front"}</Button>
+                    <Button size="small" onClick={(e) => { e.stopPropagation(); setToggle(!toggle) }}>{toggle ? "Details" : "Front"}</Button>
                     <Link to={`/dashboard/cards/${id}`} ><Button size="small" > View Page</Button> </Link>
                 </CardActions>
 

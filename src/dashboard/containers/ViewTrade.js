@@ -9,7 +9,7 @@ export default function ViewTrade(props) {
         return props.trade.cards.map(card => <DisplayAvailableCard key={card.id} card={card} />)
     }
     return (
-        <div>
+        <div className="main-content">
             <div className="requested-card">
                 <h3 className="page-title">Card Requested </h3>
                 <RequestedCard card={props.trade.requested_card} tradee={props.trade.tradee} />

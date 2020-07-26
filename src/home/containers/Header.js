@@ -47,7 +47,7 @@ export default function Header(props) {
         <header>
 
             < Paper className={classes.root} >
-                <NavLink to="/"> <h1>Sports Card Trading</h1> </NavLink>
+                <NavLink to="/"> <h1>Card Trader</h1> </NavLink>
                 <Hidden smDown>
                     <Tabs
                         value={props.value}

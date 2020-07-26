@@ -1,13 +1,19 @@
 .offer-actions {
     margin: 15px;
+    text-align: left;
+
 }
 
 .offer-actions h4 {
-    color: rgb(29, 109, 29);
+    color: rgb(7, 102, 7);
+    font-size: 18px;
 }
 
 .offer-actions button {
     margin: 0px 10px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
 }
 
 

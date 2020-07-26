@@ -8,7 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles({
     root: {
-
+        color: '#925252',
         '&:hover': {
             color: 'red'
         }

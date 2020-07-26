@@ -9,3 +9,13 @@
 .main .content {
     flex-grow: 3;
 }
+
+
+.main-content {
+    text-align: center;
+    background-color: rgba(48, 50, 51, .1);
+    padding: 10px;
+    border-radius: 5px; 
+
+    color: #925252;
+}
