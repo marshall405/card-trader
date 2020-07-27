@@ -1,0 +1,22 @@
+.preview {
+    display: flex;
+}
+
+.preview img  {
+    border: 0px solid black;
+    border-radius: 0px; 
+    width: 140px;
+}
+
+.preview .preview-img-container {
+    margin-right: 40px; 
+}
+.preview a {
+    text-decoration: none;
+    color: #1f59b1;
+}
+
+.preview a h4 {
+    font-size: 18px;
+    margin: 2px;
+}
