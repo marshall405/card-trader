@@ -1,5 +1,6 @@
 .show {
     display: flex;
+    color: #fff; 
 }
 
 .show-img-container {

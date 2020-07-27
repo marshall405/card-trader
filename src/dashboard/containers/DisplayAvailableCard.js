@@ -63,7 +63,7 @@ export default function DisplayAvailableCard(props) {
     }
     return (
 
-        <Grid item style={selected ? { border: "2px solid #1f59b1", borderRadius: "5px" } : null} onMouseLeave={() => setToggle(true)} onClick={(e) => toggleSelectCard(id, e)}>
+        <Grid item style={selected ? { borderRadius: "5px", boxShadow: "1px 1px 10px 3px #FFFF00" } : null} onMouseLeave={() => setToggle(true)} onClick={(e) => toggleSelectCard(id, e)}>
             <Card className={classes.box} >
 
                 {toggle ?

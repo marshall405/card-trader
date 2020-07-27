@@ -42,9 +42,9 @@ export default class AvailableCards extends Component {
     render() {
         return (
             <div style={{ borderTop: "10px solid #1f59b1", borderBottom: "10px solid #1f59b1", marginTop: "10px" }}>
-                <h3 className="page-title"> Your Available Cards For Trade</h3>
+                <h3 className="page-title"> My Available Cards For Trade</h3>
                 <div className="submit-offer-container">
-                    <p>Select 1 or more cards you are willing to offer</p>
+                    <p>Select 1 or more cards you are willing to offer.</p>
                     {
                         this.state.cardsIDsForOffer.length > 0 ?
                             <Button size="small" color="primary" variant="contained" onClick={this.handleSubmitOffer} >Submit Offer</Button>

@@ -1,12 +1,13 @@
 .home {
   width: 100%;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: rgba(48, 50, 51, .9);
   margin: 0px;
   box-sizing: border-box;
 }
 
 .home .page-title {
+
   color: #fff;
 }
 

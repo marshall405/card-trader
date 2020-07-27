@@ -105,7 +105,7 @@ export default class Dashboard extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="dashboard">
                 <UserHeader setActionValue={this.setActionValue} />
                 <UserActions setActionValue={this.setActionValue} action={this.state.action} />
                 <div className="home-container">

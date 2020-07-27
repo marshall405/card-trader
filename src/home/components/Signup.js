@@ -69,47 +69,50 @@ export default class Signup extends Component {
     }
     render() {
         return (
-            <Container className="home-container">
-                <h1 className="page-title"> Signup </h1>
-                <form className="signup" autoComplete="off" onSubmit={this.handleSubmit} >
+            <div className="login-container">
+                <div className="signup-overlay"></div>
+                <div className="login-content">
+                    <h1 className="page-title"> Signup </h1>
+                    <form className="signup" autoComplete="off" onSubmit={this.handleSubmit} >
 
-                    <TextField required name="username" defaultValue={this.state.username} label="Username" onChange={this.handleChange} />
-                    <TextField type="email" required name="email" label="Email" defaultValue={this.state.email} onChange={this.handleChange} />
+                        <TextField required name="username" defaultValue={this.state.username} label="Username" onChange={this.handleChange} />
+                        <TextField type="email" required name="email" label="Email" defaultValue={this.state.email} onChange={this.handleChange} />
 
-                    <TextField required id="standard-required" name="first_name" label="First Name" defaultValue={this.state.first_name} onChange={this.handleChange} />
-                    <TextField required id="standard-required" name="last_name" label="Last Name" defaultValue={this.state.last_name} onChange={this.handleChange} />
+                        <TextField required id="standard-required" name="first_name" label="First Name" defaultValue={this.state.first_name} onChange={this.handleChange} />
+                        <TextField required id="standard-required" name="last_name" label="Last Name" defaultValue={this.state.last_name} onChange={this.handleChange} />
 
-                    <TextField
-                        required
-                        name="password"
-                        id="standard-password-input"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"
-                        defaultValue={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                    <TextField
-                        required
-                        id="standard-password-input"
-                        name="password_confirmation"
-                        label="Confirm Password"
-                        type="password"
-                        autoComplete="current-password"
-                        defaultValue={this.state.password_confirmation}
-                        onChange={this.handleChange}
-                    />
-                    <div >
-                        <Button style={{ width: "300px" }} type="submit" className="login-button" variant="contained">Signup</Button>
-                    </div>
-                </form>
-                {
-                    this.state.errors.length > 0 ?
-                        this.renderErrors()
-                        :
-                        null
-                }
-            </Container >
+                        <TextField
+                            required
+                            name="password"
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                            defaultValue={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <TextField
+                            required
+                            id="standard-password-input"
+                            name="password_confirmation"
+                            label="Confirm Password"
+                            type="password"
+                            autoComplete="current-password"
+                            defaultValue={this.state.password_confirmation}
+                            onChange={this.handleChange}
+                        />
+                        <div >
+                            <Button style={{ width: "300px" }} type="submit" className="login-button" variant="contained">Signup</Button>
+                        </div>
+                    </form>
+                    {
+                        this.state.errors.length > 0 ?
+                            this.renderErrors()
+                            :
+                            null
+                    }
+                </div>
+            </div>
         )
     }
 }

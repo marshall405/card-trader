@@ -19,3 +19,18 @@
 
     color: #925252;
 }
+
+
+html {
+    /* background-color: rgba(116, 116, 116, .13); */
+    background: var(--main-bg-color);
+}
+    
+.MuiButtonBase-root.MuiTab-root {
+    font-family: 'Allerta Stencil', sans-serif;
+    
+}
+
+.MuiTab-root {
+    font-family: 'Allerta Stencil', sans-serif;
+}

@@ -1,9 +1,12 @@
 .filter {
-
+    max-width: 200px;
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
     margin: 0px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px; 
     
 }
 
@@ -21,4 +24,28 @@
 
 .filter > div {
     margin: 10px 0px;;
+}
+
+.search .MuiInputBase-root {
+    color: #FFF;
+}
+.search .MuiFormLabel-root{
+    color: rgb(138, 138, 138);
+}
+.filter .MuiRadio-colorSecondary.Mui-checked {
+    color: var(--primary-color);
+}
+
+.search .MuiInputBase-input:focus{
+   outline: 0;
+}
+
+.search .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(141, 140, 140);
+}
+.search .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: var(--primary-color);
+}
+.search .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--primary-color);
 }
