@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
-
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-
 import Typography from '@material-ui/core/Typography';
-
-
 import Button from '@material-ui/core/Button';
 
+
+import ImgModal from './ImgModal'
 
 const useStyles = makeStyles({
     root: {
@@ -30,7 +28,10 @@ const useStyles = makeStyles({
 export default function SportsCard(props) {
     const classes = useStyles();
     const [toggle, setToggle] = useState(true)
+    const [show, setShow] = useState(false)
     const { title, img_url, first_name, last_name, team, year, condition, created_at } = props.card
+
+    const handleSetShow = () => setShow(!show);
 
     return (
 
@@ -42,7 +43,7 @@ export default function SportsCard(props) {
                         {first_name + ' ' + last_name}
                     </Typography>
                     <CardMedia style={{ textAlign: "center" }}>
-                        <img src={img_url} alt="player" />
+                        <img src={img_url} alt="player" onClick={handleSetShow} />
                     </CardMedia>
 
                     <Typography align="center" className={classes.title} color="textSecondary" gutterBottom>
@@ -72,24 +73,13 @@ export default function SportsCard(props) {
                 <Button size="small" onClick={() => setToggle(!toggle)}>{toggle ? "Details" : "Front"}</Button>
             </CardActions>
 
-            {/* {
-                    props.loggedIn && !user_id ?
-                        <div className="user-card-actions">
-                            <Link to={`/dashboard/edit/${id}`} style={{ textDecoration: 'none' }}> <Button size="small" variant="contained" >Edit Card Details</Button></Link>
-                            <Button size="small" color="secondary" variant="contained" onClick={() => props.deleteCard(id)}>Delete Card</Button>
-                        </div>
-                        :
-                        null
-                }
-                {
-                    props.loggedIn && user_id ?
-                        <div className="user-card-actions">
-                            <Link to={`/dashboard/trades/${id}/new`} style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Request Trade</Button></Link>
-                        </div>
-                        :
-                        null
-                } */}
 
+            {
+                show ?
+                    <ImgModal img_url={img_url} setShow={handleSetShow} />
+                    :
+                    null
+            }
         </Card >
     )
 }

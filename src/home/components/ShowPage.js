@@ -4,6 +4,8 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import ImgModal from '../../dashboard/containers/ImgModal'
+
 
 const cardURL = "http://localhost:3001/cards/";
 export default class ShowPage extends Component {
@@ -13,6 +15,7 @@ export default class ShowPage extends Component {
         this.state = {
             card: {},
             user: {},
+            show: false,
             offer: false,
         }
     }
@@ -26,24 +29,31 @@ export default class ShowPage extends Component {
             .then(res => res.json())
             .then(json => this.setState({ card: json.card, user: json.user }))
     }
+
+    setShow = () => {
+        this.setState({ show: !this.state.show })
+    }
     render() {
-        const { title, first_name, last_name, img_url, year, condition } = this.state.card
+        const { title, first_name, last_name, team, img_url, year, condition } = this.state.card
         return (
-            <Container maxWidth="xl" className="home-container">
+            <Container maxWidth="xl" className="home-container mobile-home">
                 <h1 className="page-title"> </h1>
                 <div style={{ textAlign: 'right' }}>
                     <Link to="/cards" style={{ textDecoration: 'none' }}><Button size="small" color="primary" variant="contained" >Back to Browsing</Button></Link>
                 </div>
                 <div className="show">
-                    <div className="show-img-container">
-                        <img src={img_url} alt="player" />
+                    <div className="show-img-container home-show-page-img">
+                        <img src={img_url} alt="player" onClick={this.setShow} />
                     </div>
 
                     <div className="content">
                         <div>
-                            <h4> {title || "TITLE GOES HERE"} </h4>
+                            <h4> {title || "Missing Desc..."} </h4>
                             <Typography gutterBottom>
                                 {first_name + ' ' + last_name}
+                            </Typography>
+                            <Typography gutterBottom>
+                                {team}
                             </Typography>
                             <Typography gutterBottom>
                                 Year - {year}
@@ -69,6 +79,13 @@ export default class ShowPage extends Component {
                         null
                 }
 
+
+                {
+                    this.state.show ?
+                        <ImgModal img_url={img_url} setShow={this.setShow} />
+                        :
+                        null
+                }
             </Container >
         )
     }

@@ -28,6 +28,7 @@
     height: 100%;
     background-color: rgba(48, 50, 51, .95);
     color: #fff;
+    z-index: 3;
 }
 .modal-card div img {
     width: 500px;

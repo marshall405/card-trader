@@ -3,6 +3,7 @@
   padding: 10px;
   background-color: rgba(48, 50, 51, .9);
   margin: 0px;
+  box-sizing: border-box;
 }
 
 .home .page-title {
@@ -36,4 +37,17 @@
     background: #fff;
   }
 
-  
+  .home-show-page-img:hover{
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+  /* MOBILE */
+

@@ -14,3 +14,18 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+
+@media (max-width: 650px) {
+
+    .show {
+        display: block;
+        text-align: center;
+    }
+
+    .show-img-container{
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+
+  }
