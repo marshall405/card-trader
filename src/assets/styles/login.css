@@ -1,28 +1,24 @@
 .login {
-    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
 }
-
 
 .MuiButton-root.login-button.MuiButton-root {
     margin: 20px 0px; 
     color: #fff;
     background-color: #1f59b1;
-    
 }
 
 .MuiButton-root.login-button.MuiButton-root:hover {
-
     background-color: #3473d1;
-   
-    
+ 
 }
 
 .signup{
     text-align: center;
-    width: 700px;
+    max-width: 700px;
     margin: 0 auto;
 }
 

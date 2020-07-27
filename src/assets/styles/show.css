@@ -1,0 +1,31 @@
+.show {
+    display: flex;
+}
+
+.show-img-container {
+    margin-right: 50px;
+}
+.show-img-container img {
+    width: 400px;
+    height: 400px;
+}
+.show .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 650px) {
+
+    .show {
+        display: block;
+        text-align: center;
+    }
+
+    .show-img-container{
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+
+  }

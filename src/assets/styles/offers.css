@@ -1,11 +1,36 @@
 .offer-actions {
     margin: 15px;
+    text-align: left;
+
 }
 
 .offer-actions h4 {
-    color: rgb(29, 109, 29);
+    color: rgb(7, 102, 7);
+    font-size: 18px;
 }
 
 .offer-actions button {
     margin: 0px 10px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+}
+
+
+.modal-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 50, 51, .95);
+    color: #fff;
+    z-index: 3;
+}
+.modal-card div img {
+    width: 500px;
+    height: 500px; 
 }

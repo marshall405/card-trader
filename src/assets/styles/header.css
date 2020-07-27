@@ -1,6 +1,7 @@
 header a {
     text-decoration: none;
     color:#1f59b1; 
+    
 }
 
 /* Nav */
@@ -18,14 +19,17 @@ header a {
 .PrivateTabIndicator-root-2 {
     color: #1f59b1;
 }
+.menu {
+    color: #1f59b1;
 
+}
 
 
 
 /* USER HEADER */
 
 .MuiPaper-root.user-header{
-    background: rgba(31, 89, 177, .1);
+    /* background: rgb(168, 168, 168); */
 }
 .user-header {
     display: flex;
@@ -38,8 +42,11 @@ header a {
 
 
 .user-actions {
+    background-color: #ffffff;
+
     /* border-bottom: 1px solid red;  */
-    box-shadow: 1px 0px 10px #1f59b1;
+    box-shadow: 1px 0px 1px #393d42;
+
 }
 
 

@@ -1,12 +1,17 @@
 .filter {
-    padding: 10px;
+
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    /* justify-content: space-around; */
     margin: 0px;
-    border-bottom: 1px solid #ced4da;
     
 }
 
+
+.search-container {
+    margin: 10px;
+    text-align: center;
+}
 .search {
     padding: 5px;
     width: 340px;
@@ -14,3 +19,6 @@
     border: 1px solid #ced4da;
 }
 
+.filter > div {
+    margin: 10px 0px;;
+}
