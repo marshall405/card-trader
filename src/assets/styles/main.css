@@ -23,7 +23,7 @@
 
 html {
     /* background-color: rgba(116, 116, 116, .13); */
-    background: var(--main-bg-color);
+    /* background: var(--main-bg-color); */
 }
     
 .MuiButtonBase-root.MuiTab-root {
