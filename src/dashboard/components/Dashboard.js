@@ -18,6 +18,7 @@ import Offers from './Offers'
 
 const userCardsURL = `${process.env.REACT_APP_API}/cards/user/`
 const delCardURL = `${process.env.REACT_APP_API}/cards/`
+
 export default class Dashboard extends Component {
 
     constructor(props) {

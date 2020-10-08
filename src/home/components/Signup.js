@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 const userURL = `${process.env.REACT_APP_API}/users`
+
 export default class Signup extends Component {
     state = {
         errors: [],

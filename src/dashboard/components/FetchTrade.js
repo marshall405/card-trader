@@ -5,7 +5,9 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 import ViewTrade from '../containers/ViewTrade'
+
 const tradeURL = `${process.env.REACT_APP_API}/trades/`
+
 export default class FetchTrade extends Component {
     constructor(props) {
         super(props)

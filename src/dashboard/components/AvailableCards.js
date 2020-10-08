@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import DisplayAvailableCard from '../containers/DisplayAvailableCard'
+<<<<<<< HEAD:src/components/AvailableCards.js
+const userCardsURL = `https://evening-crag-02028.herokuapp.com/cards/user/`
+=======
+>>>>>>> dev_refactor:src/dashboard/components/AvailableCards.js
 export default class AvailableCards extends Component {
     constructor(props) {
         super(props)

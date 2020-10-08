@@ -13,8 +13,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 import PreviewNewCard from './PreviewNewCard'
+
 const cardURL = `${process.env.REACT_APP_API}/cards`
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
