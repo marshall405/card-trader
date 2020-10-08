@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
  import Container from '@material-ui/core/Container'
 import ViewOffer from '../containers/ViewOffer'
-const tradeURL = "http://localhost:3001/offers/"
+const tradeURL = `${process.env.REACT_APP_API}/offers/`
 export default class FetchTrade extends Component {
     constructor(props) {
         super(props)

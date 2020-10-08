@@ -14,7 +14,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
 import PreviewNewCard from './PreviewNewCard'
-const cardURL = "http://localhost:3001/cards"
+const cardURL = `${process.env.REACT_APP_API}/cards`
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {

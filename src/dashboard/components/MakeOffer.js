@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 
 import AvailableCards from './AvailableCards'
 
-const makeTradeOfferURL = "http://localhost:3001/trades"
+const makeTradeOfferURL = `${process.env.REACT_APP_API}/trades`
 export default class MakeOffer extends Component {
 
     constructor(props) {

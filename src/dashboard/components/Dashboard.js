@@ -16,8 +16,8 @@ import Trades from './Trades'
 import FetchOffer from './FetchOffer'
 import Offers from './Offers'
 
-const userCardsURL = `http://localhost:3001/cards/user/`
-const delCardURL = `http://localhost:3001/cards/`
+const userCardsURL = `${process.env.REACT_APP_API}/cards/user/`
+const delCardURL = `${process.env.REACT_APP_API}/cards/`
 export default class Dashboard extends Component {
 
     constructor(props) {
@@ -112,7 +112,7 @@ export default class Dashboard extends Component {
                     <Route path='/dashboard' exact render={() => <RenderUserCards cards={this.state.cards} deleteCard={this.deleteCard} setActionValue={this.setActionValue} />} />
                     <Route path='/dashboard/browse' render={() => <RenderCards loggedIn={true} />} />
                     <Route path='/dashboard/addcard' render={() => <AddNewCard addCard={this.addCard} setActionValue={this.setActionValue} />} />
-                    <Route path='/dashboard/edit/:id' render={({ match }) => <EditCard card_id={match.params.id} card={this.state.cards.find(card => card.id === parseInt(match.params.id) )} updateCard={this.updateCard} />} />
+                    <Route path='/dashboard/edit/:id' render={({ match }) => <EditCard card_id={match.params.id} card={this.state.cards.find(card => card.id === parseInt(match.params.id))} updateCard={this.updateCard} />} />
                     <Route path='/dashboard/trades/:id' exact render={({ history, match }) => <FetchTrade history={history} trade_id={match.params.id} clearTradeId={this.clearTradeId} />} />
                     <Route path='/dashboard/trades/' exact render={({ history, match }) => <Trades />} />
                     <Route path='/dashboard/offers/' exact render={({ history, match }) => <Offers />} />

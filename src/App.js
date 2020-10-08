@@ -20,7 +20,7 @@ import './assets/styles/show.css'
 
 import Home from './home/components/Home'
 import Dashboard from './dashboard/components/Dashboard'
-const userURL = "http://localhost:3001/users"
+const userURL = `${process.env.REACT_APP_API}/users`
 export default class App extends Component {
 
   constructor(props) {

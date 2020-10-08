@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from './SaveIcon';
 import CancelIcon from './CancelIcon';
 
-const editCardURL = "http://localhost:3001/cards/"
+const editCardURL = `${process.env.REACT_APP_API}/cards/`
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {

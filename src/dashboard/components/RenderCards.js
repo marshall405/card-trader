@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import PreviewCard from '../containers/PreviewCard'
-const cardsURL = "http://localhost:3001/cards"
+const cardsURL = `${process.env.REACT_APP_API}/cards`
 
 export default class RenderCards extends Component {
 

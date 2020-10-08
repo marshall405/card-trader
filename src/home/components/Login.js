@@ -4,9 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
-const loginURL = "http://localhost:3001/login"
+const loginURL = `${process.env.REACT_APP_API}/login`
 export default class Login extends Component {
-
     constructor(props) {
         super(props)
         this.state = {

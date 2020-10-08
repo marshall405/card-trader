@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 
 
 import TradeOffers from './TradeOffers'
-const tradesURL = "http://localhost:3001/offers/"
+const tradesURL = `${process.env.REACT_APP_API}/offers/`
 export default class Offers extends Component {
     constructor(props) {
         super(props)

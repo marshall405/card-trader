@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import MakeOffer from './MakeOffer';
 import ImgModal from '../containers/ImgModal'
 
-const cardURL = "http://localhost:3001/cards/";
+const cardURL = `${process.env.REACT_APP_API}/cards/`;
 export default class ShowPage extends Component {
 
     constructor(props) {
