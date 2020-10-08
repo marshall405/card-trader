@@ -1,11 +1,17 @@
 .new-card-form {
     width: 80%;
     margin: 10px auto;
+    background: #FFF;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .player-form {
     margin: 10px auto;
     text-align: center;
+    background: #FFF;
+    border-radius: 5px;
+    
 }
 .radio-container{
     display: flex;
@@ -26,4 +32,44 @@
 }
 .file-container > * {
     margin: 5px;
+}
+
+
+.new-card-form .MuiRadio-colorSecondary.Mui-checked {
+    color:var(--primary-color);
+}
+
+
+.player-form .MuiInputBase-input{
+    background: rgba(255, 255, 255, 0);
+    font-size: 22px;
+    color: var(--primary-color);
+    
+    
+}
+
+
+.player-form .MuiFormLabel-root{
+    color: rgb(255, 255, 255);
+   
+    font-size: 22px;
+}
+
+.player-form .MuiFormLabel-root.Mui-focused{
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+
+.player-form .MuiInput-underline:after {
+    border-bottom: 2px solid var(--primary-color);
+
+}
+
+.radio-new {
+    background-color: #FFF;
+}
+
+.preview-title {
+    color: var(--primary-color);
 }

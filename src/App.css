@@ -35,10 +35,14 @@ img {
 }
 
 .page-title {
-    color: #1f59b1;
+    color: var(--primary-color);
+    font-family: 'Allerta Stencil', sans-serif;
+    letter-spacing: 1px;
+    /* text-shadow: 1px -1px 1px #fff; */
 }
 .empty-message {
     text-align: center;
+    color: #FFF;
 }
 
 a {

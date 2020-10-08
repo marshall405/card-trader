@@ -9,14 +9,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
-<<<<<<< HEAD:src/components/EditCard.js
-const editCardURL = "https://evening-crag-02028.herokuapp.com/cards/"
-=======
+
 import SaveIcon from './SaveIcon';
 import CancelIcon from './CancelIcon';
 
-const editCardURL = "http://localhost:3001/cards/"
->>>>>>> dev_refactor:src/dashboard/components/EditCard.js
+
+const editCardURL = `${process.env.REACT_APP_API}/cards/`
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {

@@ -22,11 +22,11 @@ export default class Home extends Component {
               
                     <Route path='/cards' exact render={() => <RenderCards setValue={this.setValue} />} />
                     <Route path='/cards/:id' exact render={({ match }) => <ShowPage card_id={match.params.id} setValue={this.setValue} />} />
-                <div className="home">
+                
 
                     <Route path='/signup' exact render={() => <Signup logUserIn={this.props.logUserIn} setValue={this.setValue} />} />
                     <Route path='/login' exact render={() => <Login logUserIn={this.props.logUserIn} setValue={this.setValue} />} />
-                </div>
+                
             </div>
         )
     }

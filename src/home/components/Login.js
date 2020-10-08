@@ -4,9 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
-const loginURL = "https://evening-crag-02028.herokuapp.com/login"
-export default class Login extends Component {
+const loginURL = `${process.env.REACT_APP_API}/login`
 
+export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -55,32 +55,38 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <Container className="home-container">
-                <h1 className="page-title"> Login </h1>
-                <form className="login" onSubmit={this.handleSubmit}>
-                    <TextField required
-                        id="standard-required"
-                        label="Username"
-                        name="username"
-                        onKeyUp={this.handleKeyUp}
-                    />
-                    <TextField
-                        id="standard-password-input"
-                        label="Password"
-                        type="password"
-                        name="password"
-                        autoComplete="current-password"
-                        onKeyUp={this.handleKeyUp}
-                    />
-                    <Button type="submit" className="login-button" variant="contained">Login</Button>
-                </form>
-                {
-                    this.state.errors ?
-                        this.state.errors
-                        :
-                        null
-                }
-            </Container>
+
+            <div className="login-container">
+                <div className="login-overlay"></div>
+
+                <div className="login-content">
+                    <h1 className="page-title"> Login </h1>
+                    <form className="login" onSubmit={this.handleSubmit}>
+                        <TextField required
+                            id="standard-required"
+                            label="Username"
+                            name="username"
+                            onKeyUp={this.handleKeyUp}
+                        />
+                        <TextField
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            name="password"
+                            autoComplete="current-password"
+                            onKeyUp={this.handleKeyUp}
+                        />
+                        <Button type="submit" className="login-button" variant="contained">Login</Button>
+                    </form>
+                    {
+                        this.state.errors ?
+                            this.state.errors
+                            :
+                            null
+                    }
+                </div>
+            </div>
+
         )
     }
 }

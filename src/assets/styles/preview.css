@@ -1,9 +1,10 @@
 .preview {
     display: flex;
+    background-color: #FFF;
 }
-
+ 
 .preview img  {
-    border: 0px solid black;
+    border: 0px solid rgb(0, 0, 0);
     border-radius: 0px; 
     width: 140px;
 }
@@ -13,10 +14,10 @@
 }
 .preview a {
     text-decoration: none;
-    color: #1f59b1;
+    color: var(--primary-color);
 }
 
 .preview a h4 {
-    font-size: 18px;
+    font-size: 24px;
     margin: 2px;
 }

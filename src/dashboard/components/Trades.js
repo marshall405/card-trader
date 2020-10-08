@@ -4,7 +4,9 @@ import Container from '@material-ui/core/Container';
 
 import TradeRequests from './TradeRequests'
 
-const tradesURL = "https://evening-crag-02028.herokuapp.com/trades/"
+
+const tradesURL = `${process.env.REACT_APP_API}/trades/`
+
 export default class Trades extends Component {
     constructor(props) {
         super(props)

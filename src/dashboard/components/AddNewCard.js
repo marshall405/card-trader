@@ -13,12 +13,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
-<<<<<<< HEAD:src/components/AddNewCard.js
-const cardURL = "https://evening-crag-02028.herokuapp.com/cards"
-=======
+
 import PreviewNewCard from './PreviewNewCard'
-const cardURL = "http://localhost:3001/cards"
->>>>>>> dev_refactor:src/dashboard/components/AddNewCard.js
+
+const cardURL = `${process.env.REACT_APP_API}/cards`
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -98,8 +97,9 @@ export default function AddNewCard(props) {
     return (
         < Container className="home-container" >
             <h1 className="page-title">Add New Card</h1>
-            <h3> Card Details </h3>
             <div className="new-card-form">
+                <h3> Card Details </h3>
+
                 {
                     errors ?
                         <h5 className="alert"> {errors}</h5>
@@ -182,7 +182,7 @@ export default function AddNewCard(props) {
                         />
                     </div>
                     <div className="radio-container">
-                        <div>
+                        <div className="radio-new">
                             <FormLabel required component="legend">Condition</FormLabel>
                             <RadioGroup required aria-label="condition" name="condition" value={condition} onChange={handleChange}>
                                 <FormControlLabel value="Brand New" control={<Radio />} label="Brand New" />
@@ -192,7 +192,7 @@ export default function AddNewCard(props) {
                                 <FormControlLabel value="Not Specified" control={<Radio />} label="Not Specified" />
                             </RadioGroup>
                         </div>
-                        <div>
+                        <div className="radio-new">
                             <FormLabel required component="legend">Sport</FormLabel>
                             <RadioGroup required aria-label="sport" name="category" value={category} onChange={handleChange}>
                                 <FormControlLabel value="Basketball" control={<Radio />} label="Basketball" />
@@ -214,7 +214,7 @@ export default function AddNewCard(props) {
             {
                 title ?
                     <>
-                        <h2> Card Preview </h2>
+                        <h2 className="preview-title"> Card Preview </h2>
                         <PreviewNewCard title={title} condition={condition} category={category} img={image} />
                     </>
                     :

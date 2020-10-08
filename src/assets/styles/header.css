@@ -1,9 +1,45 @@
+
 header a {
     text-decoration: none;
-    color:#1f59b1; 
+    color:var(--primary-color) 
     
 }
 
+header .PrivateTabIndicator-colorSecondary-5 {
+    background-color: var(--primary-color)
+}
+.MuiTab-textColorInherit {
+    transform: rotate(-3deg)
+}
+.MuiTab-textColorInherit:hover {
+    transform: rotate(0deg);
+    color: rgba(31, 89, 177, .9);
+}
+.MuiTab-textColorInherit.Mui-selected {
+    transform: rotate(0deg)
+
+}
+.logo {
+    font-family: 'Allerta Stencil', sans-serif;
+    /* background: #293021; */
+    /* color: rgb(126, 126, 126); */
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    padding: 5px 10px 5px 10px;
+    text-shadow: 1px -1px 1px black;
+    box-shadow: 2px 2px 5px 0px black;
+    border-radius: 5px; 
+    font-size: 40px;
+    transform: rotate(-3deg);
+    text-decoration: underline;
+    margin: 20px 0px;
+}
+
+.logo:hover {
+    text-shadow: -1px 1px 1px black;
+    box-shadow: -2px -2px 5px 0px black;
+    transform: rotate(3deg)
+}
 /* Nav */
 .MuiPaper-root {
     align-items: center;
@@ -12,15 +48,15 @@ header a {
 
 /* selected link for nav */
 .MuiTabs-root .Mui-selected {
-    color: #1f59b1;
+    color: var(--primary-color)
 }
 
 /*  Nav indicator for links, only for active link */
 .PrivateTabIndicator-root-2 {
-    color: #1f59b1;
+    color: var(--primary-color)
 }
 .menu {
-    color: #1f59b1;
+    color: var(--primary-color)
 
 }
 
@@ -29,24 +65,94 @@ header a {
 /* USER HEADER */
 
 .MuiPaper-root.user-header{
-    /* background: rgb(168, 168, 168); */
+    background: rgb(49, 48, 48);
+    color: #fff;
+
 }
+
 .user-header {
     display: flex;
     padding: 0px 30px;
+
 }
 
+.user-logo {
+    font-family: 'Allerta Stencil', sans-serif;
+    background: #000000;
+    color: #2b2b2b;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px; 
+    font-size: 24px;
+    transform: rotate(-2deg);
+    text-decoration: underline;
+}
+
+.user-logo-light{
+    font-family: 'Allerta Stencil', sans-serif;
+    background: #ffffff;
+    padding: 5px 10px 5px 10px;
+    /* text-shadow: 1px -1px 1px black; */
+    box-shadow: 1px 1px 20px 7px #018dff;
+    border-radius: 5px; 
+    font-size: 24px;
+    transform: rotate(-2deg);
+    text-decoration: underline;
+}
+.user-logo-light:hover {
+    text-shadow: -1px 1px 1px black;
+    box-shadow: -2px -2px 5px 0px black;
+    transform: rotate(2deg)
+}
 .user-header > *:hover {    
-    color: red;
+    color: black;
 }
 
-
+.user-actions .PrivateTabIndicator-colorSecondary-5{
+    background-color: var(--primary-color)
+}
+.user-actions .PrivateTabIndicator-colorSecondary-7{
+    background-color: var(--primary-color)
+}
 .user-actions {
     background-color: #ffffff;
 
     /* border-bottom: 1px solid red;  */
-    box-shadow: 1px 0px 1px #393d42;
+    box-shadow: 1px 0px 2px #393d42;
 
 }
+
+.user-logout {
+    font-family: 'Allerta Stencil', sans-serif;
+    background: #000000;
+    color: #2b2b2b;
+    padding: 5px 10px 5px 10px;
+
+    border-radius: 5px; 
+    font-size: 4px;
+    transform: rotate(-2deg);
+    text-decoration: underline;
+}
+
+.user-logout.MuiButtonBase-root {
+    font-family: 'Allerta Stencil', sans-serif;
+    background: #000000;
+    color: #2b2b2b;
+    padding: 5px 10px 5px 10px;
+
+    border-radius: 5px; 
+    font-size: 24px;
+    transform: rotate(-2deg);
+    text-decoration: underline;
+}
+.user-logout:hover {
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px; 
+    transform: rotate(2deg);
+    background: #ffffff;
+    opacity: 1;
+    box-shadow: 1px 1px 20px 7px #018dff;
+    color: #018dff;
+}
+
 
 

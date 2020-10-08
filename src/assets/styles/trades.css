@@ -9,6 +9,7 @@
     flex-grow: 0;
     flex-shrink: 0;
     box-shadow: 0px 0px 10px #1e2735;
+    background-color: #FFF;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -73,6 +74,7 @@
 
 .submit-offer-container {
     display: flex;
+    color: #FFF;
     justify-content: space-between;
     align-items: center;
     height: 40px;
